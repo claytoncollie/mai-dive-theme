@@ -1,12 +1,10 @@
 /*
-	Theme Name: Agency Pro Theme
-	Theme URI: http://my.studiopress.com/themes/agency/
-	Description: Represent your professional services with confidence and clarity by harnessing the streamlined professionalism of the Agency theme.
-	Author: StudioPress
-	Author URI: http://www.studiopress.com/
-	Version: 3.1.2
- 
-	Tags: black, orange, white, one-column, two-columns, three-columns, responsive-layout, custom-menu, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, premise-landing-page
+	Theme Name: Mai Dive Child Theme
+	Theme URI: http://www.maidive.com
+	Description: A child theme built on the Genesis Framework
+	Author: Clayton Collie
+	Author URI: http://www.claytoncollie.com/
+	Version: 1.0.0
  
 	Template: genesis
 	Template Version: 2.1
@@ -160,7 +158,7 @@ input[type="button"],
 input[type="reset"],
 input[type="submit"],
 textarea:focus,
-.agency-pro-home .featured-content img,
+.maidive-home .featured-content img,
 .button {
 	-webkit-transition: all 0.1s ease-in-out;
 	-moz-transition:    all 0.1s ease-in-out;
@@ -492,7 +490,7 @@ Structure and Layout
 	padding: 5% 0;
 }
 
-.agency-pro-home .site-inner {
+.maidive-home .site-inner {
 	padding: 0;
 }
 
@@ -1158,33 +1156,33 @@ Content Area
 /* Home Page
 --------------------------------------------- */
 
-.agency-pro-home .content .widget {
+.maidive-home .content .widget {
 	background: #fff;
 	margin-bottom: 80px;
 	padding: 40px;
 }
 
-.agency-pro-home .content .featured-content,
-.agency-pro-home .content .widget_text {
+.maidive-home .content .featured-content,
+.maidive-home .content .widget_text {
 	padding: 0;
 }
 
-.agency-pro-home .content .textwidget {
+.maidive-home .content .textwidget {
 	padding: 40px;
 }
 
-.agency-pro-home .content .featured-content .widget-title,
-.agency-pro-home .content .widget_text .widget-title {
+.maidive-home .content .featured-content .widget-title,
+.maidive-home .content .widget_text .widget-title {
 	color: #fff;
 	text-align: center;
 	margin: -40px 0 0;
 	padding-bottom: 20px;
 }
 
-.agency-pro-home .content .featured-content .widget-title::after,
-.agency-pro-home .content .featured-content .widget-title::before,
-.agency-pro-home .content .widget_text .widget-title:after,
-.agency-pro-home .content .widget_text .widget-title:before {
+.maidive-home .content .featured-content .widget-title::after,
+.maidive-home .content .featured-content .widget-title::before,
+.maidive-home .content .widget_text .widget-title:after,
+.maidive-home .content .widget_text .widget-title:before {
 	content: " ";
 	display: inline-block;
 	border-top: 2px solid #fff;
@@ -1192,77 +1190,77 @@ Content Area
 	width: 15%;
 }
 
-.agency-pro-home .content .featured-content .widget-title::before,
-.agency-pro-home .content .widget_text .widget-title:before {
+.maidive-home .content .featured-content .widget-title::before,
+.maidive-home .content .widget_text .widget-title:before {
 	margin-right: 12px;
 }
 
-.agency-pro-home .content .featured-content .widget-title::after,
-.agency-pro-home .content .widget_text .widget-title:after {
+.maidive-home .content .featured-content .widget-title::after,
+.maidive-home .content .widget_text .widget-title:after {
 	margin-left: 12px;
 }
 
-.agency-pro-home .content .featured-content article ~ .widget-title {
+.maidive-home .content .featured-content article ~ .widget-title {
 	clear: both;
 	color: #333333;
 	margin: 0;
 	padding: 20px 0;
 }
 
-.agency-pro-home .content .featured-content article ~ .widget-title:before,
-.agency-pro-home .content .featured-content article ~ .widget-title:after {
+.maidive-home .content .featured-content article ~ .widget-title:before,
+.maidive-home .content .featured-content article ~ .widget-title:after {
 	border-color: #333333;
 }
 
-.agency-pro-home .content .home-middle .featured-content article ~ .widget-title,
-.agency-pro-home .content .home-middle .featured-content article ~ .widget-title:before,
-.agency-pro-home .content .home-middle .featured-content article ~ .widget-title:after {
+.maidive-home .content .home-middle .featured-content article ~ .widget-title,
+.maidive-home .content .home-middle .featured-content article ~ .widget-title:before,
+.maidive-home .content .home-middle .featured-content article ~ .widget-title:after {
 	border-color: #fff;
 	color: #fff;
 }
 
-.agency-pro-home .content .featured-content article ~ ul,
-.agency-pro-home .content .featured-content .more-from-category {
+.maidive-home .content .featured-content article ~ ul,
+.maidive-home .content .featured-content .more-from-category {
 	margin-bottom: 40px;
 	padding: 0 10px;
 	text-align: center;
 }
 
-.agency-pro-home .content .featured-content .entry {
+.maidive-home .content .featured-content .entry {
 	border-radius: 0;
 	margin: 0;
 	padding: 0;
 	position: relative;
 }
 
-.agency-pro-home .content .featured-content .entry-image {
+.maidive-home .content .featured-content .entry-image {
 	display: block;
 	margin-bottom: 0;
 }
 
-.agency-pro-home .content .featured-content .entry-header {
+.maidive-home .content .featured-content .entry-header {
 	padding: 40px 40px 0;
 }
 
-.agency-pro-home .content .featured-content .entry-content {
+.maidive-home .content .featured-content .entry-content {
 	padding: 0 40px;
 }
 
-.agency-pro-home .content .featured-content .entry-content p {
+.maidive-home .content .featured-content .entry-content p {
 	margin-bottom: 40px;
 }
 
-.agency-pro-home .content .featured-content a:hover {
+.maidive-home .content .featured-content a:hover {
 	color: #d7c603;
 }
 
-.agency-pro-home .content .featuredpost .entry {
+.maidive-home .content .featuredpost .entry {
 	background: none;
 	float: left;
 	width: 33.33334%;
 }
 
-.agency-pro-home .content .featuredpost img.entry-image {
+.maidive-home .content .featuredpost img.entry-image {
 	margin: 0;
 }
 
@@ -1673,216 +1671,216 @@ Theme Colors
 /* Agency Pro Blue
 --------------------------------------------- */
 
-.agency-pro-blue .genesis-nav-menu .current-menu-item > a,
-.agency-pro-blue .genesis-nav-menu .v .current-menu-item > a:hover,
-.agency-pro-blue .genesis-nav-menu a:hover,
-.agency-pro-blue .site-title a:hover,
-.agency-pro-blue a,
-.agency-pro-blue.agency-pro-home .featured-content a:hover {
+.maidive-blue .genesis-nav-menu .current-menu-item > a,
+.maidive-blue .genesis-nav-menu .v .current-menu-item > a:hover,
+.maidive-blue .genesis-nav-menu a:hover,
+.maidive-blue .site-title a:hover,
+.maidive-blue a,
+.maidive-blue.maidive-home .featured-content a:hover {
 	color: #0cc4c6;
 }
 
-.agency-pro-blue .archive-pagination li a:hover,
-.agency-pro-blue .archive-pagination li.active a,
-.agency-pro-blue .breadcrumb a,
-.agency-pro-blue .genesis-nav-menu a,
-.agency-pro-blue .home-top a:hover,
-.agency-pro-blue .site-title a,
-.agency-pro-blue a:hover.button,
-.agency-pro-blue a.button {
+.maidive-blue .archive-pagination li a:hover,
+.maidive-blue .archive-pagination li.active a,
+.maidive-blue .breadcrumb a,
+.maidive-blue .genesis-nav-menu a,
+.maidive-blue .home-top a:hover,
+.maidive-blue .site-title a,
+.maidive-blue a:hover.button,
+.maidive-blue a.button {
 	color: #fff;
 }
 
-.agency-pro-blue .genesis-nav-menu .sub-menu .current-menu-item > a,
-.agency-pro-blue .site-footer a {
+.maidive-blue .genesis-nav-menu .sub-menu .current-menu-item > a,
+.maidive-blue .site-footer a {
 	color: #999;
 }
 
-.agency-pro-blue .archive-pagination a,
-.agency-pro-blue .entry-title a,
-.agency-pro-blue .entry-title,
-.agency-pro-blue .home-top a,
-.agency-pro-blue .site-footer a:hover,
-.agency-pro-blue a:hover {
+.maidive-blue .archive-pagination a,
+.maidive-blue .entry-title a,
+.maidive-blue .entry-title,
+.maidive-blue .home-top a,
+.maidive-blue .site-footer a:hover,
+.maidive-blue a:hover {
 	color: #333;
 }
 
-.agency-pro-blue .genesis-nav-menu a:hover,
-.agency-pro-blue .genesis-nav-menu .current-menu-item > a,
-.agency-pro-blue .genesis-nav-menu .v .current-menu-item > a:hover {
+.maidive-blue .genesis-nav-menu a:hover,
+.maidive-blue .genesis-nav-menu .current-menu-item > a,
+.maidive-blue .genesis-nav-menu .v .current-menu-item > a:hover {
 	border-color: #0cc4c6;
 }
 
-.agency-pro-blue .archive-pagination li a:hover,
-.agency-pro-blue .archive-pagination li.active a,
-.agency-pro-blue a:hover.button,
-.agency-pro-blue button:hover,
-.agency-pro-blue input:hover[type="button"],
-.agency-pro-blue input:hover[type="reset"],
-.agency-pro-blue input:hover[type="submit"],
-body.agency-pro-blue {
+.maidive-blue .archive-pagination li a:hover,
+.maidive-blue .archive-pagination li.active a,
+.maidive-blue a:hover.button,
+.maidive-blue button:hover,
+.maidive-blue input:hover[type="button"],
+.maidive-blue input:hover[type="reset"],
+.maidive-blue input:hover[type="submit"],
+body.maidive-blue {
 	background-color: #0cc4c6;
 }
 
 /* Agency Pro Green
 --------------------------------------------- */
 
-.agency-pro-green .genesis-nav-menu .current-menu-item > a,
-.agency-pro-green .genesis-nav-menu .v .current-menu-item > a:hover,
-.agency-pro-green .genesis-nav-menu a:hover,
-.agency-pro-green .site-title a:hover,
-.agency-pro-green a,
-.agency-pro-green.agency-pro-home .featured-content a:hover {
+.maidive-green .genesis-nav-menu .current-menu-item > a,
+.maidive-green .genesis-nav-menu .v .current-menu-item > a:hover,
+.maidive-green .genesis-nav-menu a:hover,
+.maidive-green .site-title a:hover,
+.maidive-green a,
+.maidive-green.maidive-home .featured-content a:hover {
 	color: #36c38c;
 }
 
-.agency-pro-green .archive-pagination li a:hover,
-.agency-pro-green .archive-pagination li.active a,
-.agency-pro-green .breadcrumb a,
-.agency-pro-green .genesis-nav-menu a,
-.agency-pro-green .home-top a:hover,
-.agency-pro-green .site-title a,
-.agency-pro-green a:hover.button,
-.agency-pro-green a.button {
+.maidive-green .archive-pagination li a:hover,
+.maidive-green .archive-pagination li.active a,
+.maidive-green .breadcrumb a,
+.maidive-green .genesis-nav-menu a,
+.maidive-green .home-top a:hover,
+.maidive-green .site-title a,
+.maidive-green a:hover.button,
+.maidive-green a.button {
 	color: #fff;
 }
 
-.agency-pro-green .genesis-nav-menu .sub-menu .current-menu-item > a,
-.agency-pro-green .site-footer a {
+.maidive-green .genesis-nav-menu .sub-menu .current-menu-item > a,
+.maidive-green .site-footer a {
 	color: #999;
 }
 
-.agency-pro-green .archive-pagination a,
-.agency-pro-green .entry-title a,
-.agency-pro-green .entry-title,
-.agency-pro-green .home-top a,
-.agency-pro-green .site-footer a:hover,
-.agency-pro-green a:hover {
+.maidive-green .archive-pagination a,
+.maidive-green .entry-title a,
+.maidive-green .entry-title,
+.maidive-green .home-top a,
+.maidive-green .site-footer a:hover,
+.maidive-green a:hover {
 	color: #333;
 }
 
-.agency-pro-green .genesis-nav-menu a:hover,
-.agency-pro-green .genesis-nav-menu .current-menu-item > a,
-.agency-pro-green .genesis-nav-menu .v .current-menu-item > a:hover {
+.maidive-green .genesis-nav-menu a:hover,
+.maidive-green .genesis-nav-menu .current-menu-item > a,
+.maidive-green .genesis-nav-menu .v .current-menu-item > a:hover {
 	border-color: #36c38c;
 }
 
-.agency-pro-green .archive-pagination li a:hover,
-.agency-pro-green .archive-pagination li.active a,
-.agency-pro-green a:hover.button,
-.agency-pro-green button:hover,
-.agency-pro-green input:hover[type="button"],
-.agency-pro-green input:hover[type="reset"],
-.agency-pro-green input:hover[type="submit"],
-body.agency-pro-green {
+.maidive-green .archive-pagination li a:hover,
+.maidive-green .archive-pagination li.active a,
+.maidive-green a:hover.button,
+.maidive-green button:hover,
+.maidive-green input:hover[type="button"],
+.maidive-green input:hover[type="reset"],
+.maidive-green input:hover[type="submit"],
+body.maidive-green {
 	background-color: #36c38c;
 }
 
 /* Agency Pro Orange
 --------------------------------------------- */
 
-.agency-pro-orange .genesis-nav-menu .current-menu-item > a,
-.agency-pro-orange .genesis-nav-menu .v .current-menu-item > a:hover,
-.agency-pro-orange .genesis-nav-menu a:hover,
-.agency-pro-orange .site-title a:hover,
-.agency-pro-orange a,
-.agency-pro-orange.agency-pro-home .featured-content a:hover  {
+.maidive-orange .genesis-nav-menu .current-menu-item > a,
+.maidive-orange .genesis-nav-menu .v .current-menu-item > a:hover,
+.maidive-orange .genesis-nav-menu a:hover,
+.maidive-orange .site-title a:hover,
+.maidive-orange a,
+.maidive-orange.maidive-home .featured-content a:hover  {
 	color: #f07802;
 }
 
-.agency-pro-orange .archive-pagination li a:hover,
-.agency-pro-orange .archive-pagination li.active a,
-.agency-pro-orange .breadcrumb a,
-.agency-pro-orange .genesis-nav-menu a,
-.agency-pro-orange .home-top a:hover,
-.agency-pro-orange .site-title a,
-.agency-pro-orange a:hover.button,
-.agency-pro-orange a.button {
+.maidive-orange .archive-pagination li a:hover,
+.maidive-orange .archive-pagination li.active a,
+.maidive-orange .breadcrumb a,
+.maidive-orange .genesis-nav-menu a,
+.maidive-orange .home-top a:hover,
+.maidive-orange .site-title a,
+.maidive-orange a:hover.button,
+.maidive-orange a.button {
 	color: #fff;
 }
 
-.agency-pro-orange .genesis-nav-menu .sub-menu .current-menu-item > a,
-.agency-pro-orange .site-footer a {
+.maidive-orange .genesis-nav-menu .sub-menu .current-menu-item > a,
+.maidive-orange .site-footer a {
 	color: #999;
 }
 
-.agency-pro-orange .archive-pagination a,
-.agency-pro-orange .entry-title a,
-.agency-pro-orange .entry-title,
-.agency-pro-orange .home-top a,
-.agency-pro-orange .site-footer a:hover,
-.agency-pro-orange a:hover {
+.maidive-orange .archive-pagination a,
+.maidive-orange .entry-title a,
+.maidive-orange .entry-title,
+.maidive-orange .home-top a,
+.maidive-orange .site-footer a:hover,
+.maidive-orange a:hover {
 	color: #333;
 }
 
-.agency-pro-orange .genesis-nav-menu a:hover,
-.agency-pro-orange .genesis-nav-menu .current-menu-item > a,
-.agency-pro-orange .genesis-nav-menu .v .current-menu-item > a:hover {
+.maidive-orange .genesis-nav-menu a:hover,
+.maidive-orange .genesis-nav-menu .current-menu-item > a,
+.maidive-orange .genesis-nav-menu .v .current-menu-item > a:hover {
 	border-color: #f07802;
 }
 
-.agency-pro-orange .archive-pagination li a:hover,
-.agency-pro-orange .archive-pagination li.active a,
-.agency-pro-orange a:hover.button,
-.agency-pro-orange button:hover,
-.agency-pro-orange input:hover[type="button"],
-.agency-pro-orange input:hover[type="reset"],
-.agency-pro-orange input:hover[type="submit"],
-body.agency-pro-orange {
+.maidive-orange .archive-pagination li a:hover,
+.maidive-orange .archive-pagination li.active a,
+.maidive-orange a:hover.button,
+.maidive-orange button:hover,
+.maidive-orange input:hover[type="button"],
+.maidive-orange input:hover[type="reset"],
+.maidive-orange input:hover[type="submit"],
+body.maidive-orange {
 	background-color: #f07802;
 }
 
 /* Agency Pro Red
 --------------------------------------------- */
 
-.agency-pro-red .genesis-nav-menu .current-menu-item > a,
-.agency-pro-red .genesis-nav-menu .v .current-menu-item > a:hover,
-.agency-pro-red .genesis-nav-menu a:hover,
-.agency-pro-red .site-title a:hover,
-.agency-pro-red a,
-.agency-pro-red.agency-pro-home .featured-content a:hover {
+.maidive-red .genesis-nav-menu .current-menu-item > a,
+.maidive-red .genesis-nav-menu .v .current-menu-item > a:hover,
+.maidive-red .genesis-nav-menu a:hover,
+.maidive-red .site-title a:hover,
+.maidive-red a,
+.maidive-red.maidive-home .featured-content a:hover {
 	color: #de3233;
 }
 
-.agency-pro-red .archive-pagination li a:hover,
-.agency-pro-red .archive-pagination li.active a,
-.agency-pro-red .breadcrumb a,
-.agency-pro-red .genesis-nav-menu a,
-.agency-pro-red .home-top a:hover,
-.agency-pro-red .site-title a,
-.agency-pro-red a:hover.button,
-.agency-pro-red a.button {
+.maidive-red .archive-pagination li a:hover,
+.maidive-red .archive-pagination li.active a,
+.maidive-red .breadcrumb a,
+.maidive-red .genesis-nav-menu a,
+.maidive-red .home-top a:hover,
+.maidive-red .site-title a,
+.maidive-red a:hover.button,
+.maidive-red a.button {
 	color: #fff;
 }
 
-.agency-pro-red .genesis-nav-menu .sub-menu .current-menu-item > a,
-.agency-pro-red .site-footer a {
+.maidive-red .genesis-nav-menu .sub-menu .current-menu-item > a,
+.maidive-red .site-footer a {
 	color: #999;
 }
 
-.agency-pro-red .archive-pagination a,
-.agency-pro-red .entry-title a,
-.agency-pro-red .entry-title,
-.agency-pro-red .home-top a,
-.agency-pro-red .site-footer a:hover,
-.agency-pro-red a:hover {
+.maidive-red .archive-pagination a,
+.maidive-red .entry-title a,
+.maidive-red .entry-title,
+.maidive-red .home-top a,
+.maidive-red .site-footer a:hover,
+.maidive-red a:hover {
 	color: #333;
 }
 
-.agency-pro-red .genesis-nav-menu a:hover,
-.agency-pro-red .genesis-nav-menu .current-menu-item > a,
-.agency-pro-red .genesis-nav-menu .v .current-menu-item > a:hover {
+.maidive-red .genesis-nav-menu a:hover,
+.maidive-red .genesis-nav-menu .current-menu-item > a,
+.maidive-red .genesis-nav-menu .v .current-menu-item > a:hover {
 	border-color: #de3233;
 }
 
-.agency-pro-red .archive-pagination li a:hover,
-.agency-pro-red .archive-pagination li.active a,
-.agency-pro-red a:hover.button,
-.agency-pro-red button:hover,
-.agency-pro-red input:hover[type="button"],
-.agency-pro-red input:hover[type="reset"],
-.agency-pro-red input:hover[type="submit"],
-body.agency-pro-red {
+.maidive-red .archive-pagination li a:hover,
+.maidive-red .archive-pagination li.active a,
+.maidive-red a:hover.button,
+.maidive-red button:hover,
+.maidive-red input:hover[type="button"],
+.maidive-red input:hover[type="reset"],
+.maidive-red input:hover[type="submit"],
+body.maidive-red {
 	background-color: #de3233;
 }
 
@@ -1925,11 +1923,11 @@ Media Queries
 		width: 300px;
 	}
 	
-	.agency-pro-home .home-middle .featuredpost .entry {
+	.maidive-home .home-middle .featuredpost .entry {
 		min-height: 320px;
 	}
 	
-	.agency-pro-home .home-bottom .featuredpost .entry {
+	.maidive-home .home-bottom .featuredpost .entry {
 		min-height: 360px;
 	}
 
@@ -2016,7 +2014,7 @@ Media Queries
 	  clear: left;
 	}
 	
-	.agency-pro-home .content .featuredpost .entry {
+	.maidive-home .content .featuredpost .entry {
 		min-height: 380px;
 		width: 50%;
 	}
@@ -2052,11 +2050,11 @@ Media Queries
 		width: 100%;
 	}
 	
-	.agency-pro-home .wrap {
+	.maidive-home .wrap {
 		max-width: 640px;
 	}
 	
-	.agency-pro-home .home-middle .featuredpost .entry {
+	.maidive-home .home-middle .featuredpost .entry {
 		min-height: 320px;
 	}
 	
@@ -2094,16 +2092,16 @@ Media Queries
 		width: 90%;
 	}
 	
-	.agency-pro-home .content .wrap {
+	.maidive-home .content .wrap {
 		max-width: 380px;
 	}
 
-	.agency-pro-home .content .featuredpost .entry {
+	.maidive-home .content .featuredpost .entry {
 		min-height: 380px;
 		width: 100%;
 	}
 	
-	.agency-pro-home .content .featured-content .entry-header {
+	.maidive-home .content .featured-content .entry-header {
 		clear: both;
 	}
 	

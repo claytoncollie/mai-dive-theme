@@ -1,9 +1,9 @@
 <?php
 /**
- * This file adds the Landing template to the Agency Pro Theme.
+ * This file adds the Landing template to the Mai Dive Child Theme.
  *
- * @author StudioPress
- * @package Agency Pro
+ * @author Clayton Collie
+ * @package Mai Dive
  * @subpackage Customizations
  */
 
@@ -12,10 +12,10 @@ Template Name: Landing
 */
 
 //* Add custom body class to the head
-add_filter( 'body_class', 'agency_add_body_class' );
-function agency_add_body_class( $classes ) {
+add_filter( 'body_class', 'maidive_add_body_class' );
+function maidive_add_body_class( $classes ) {
 
-   $classes[] = 'agency-pro-landing';
+   $classes[] = 'maidive-landing';
    return $classes;
    
 }

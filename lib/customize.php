@@ -7,7 +7,7 @@
  * @subpackage Customize
  * @since 3.4.0
  */
-class Child_Agency_Image_Control extends WP_Customize_Image_Control {
+class Child_Maidive_Image_Control extends WP_Customize_Image_Control {
 
 	/**
 	 * Constructor.
@@ -22,15 +22,15 @@ class Child_Agency_Image_Control extends WP_Customize_Image_Control {
 	 * @param array $args
 	 */
 	public function __construct( $manager, $id, $args ) {
-		$this->statuses = array( '' => __( 'No Image', 'agency' ) );
+		$this->statuses = array( '' => __( 'No Image', 'maidive' ) );
 
 		parent::__construct( $manager, $id, $args );
 
-		$this->add_tab( 'upload-new', __( 'Upload New', 'agency' ), array( $this, 'tab_upload_new' ) );
-		$this->add_tab( 'uploaded',   __( 'Uploaded', 'agency' ), array( $this, 'tab_uploaded' ) );
+		$this->add_tab( 'upload-new', __( 'Upload New', 'maidive' ), array( $this, 'tab_upload_new' ) );
+		$this->add_tab( 'uploaded',   __( 'Uploaded', 'maidive' ), array( $this, 'tab_uploaded' ) );
 		
 		if ( $this->setting->default )
-			$this->add_tab( 'default',  __( 'Default', 'agency' ), array( $this, 'tab_default_background' ) );
+			$this->add_tab( 'default',  __( 'Default', 'maidive' ), array( $this, 'tab_default_background' ) );
 
 		// Early priority to occur before $this->manager->prepare_controls();
 		add_action( 'customize_controls_init', array( $this, 'prepare_control' ), 5 );
@@ -49,13 +49,13 @@ class Child_Agency_Image_Control extends WP_Customize_Image_Control {
 
 global $wp_customize;
 
-$wp_customize->add_section( 'agency-image', array(
-	'title'    => __( 'Backstretch Image', 'agency' ),
-	'description' => __( '<p>Use the included default image or personalize your site by uploading your own image for the background.</p><p>The default image is <strong>1600 x 1000 pixels</strong>.</p>', 'agency' ),
+$wp_customize->add_section( 'maidive-image', array(
+	'title'    => __( 'Backstretch Image', 'maidive' ),
+	'description' => __( '<p>Use the included default image or personalize your site by uploading your own image for the background.</p><p>The default image is <strong>1600 x 1000 pixels</strong>.</p>', 'maidive' ),
 	'priority' => 75,
 ) );
 
-$wp_customize->add_setting( 'agency-backstretch-image', array(
+$wp_customize->add_setting( 'maidive-backstretch-image', array(
 	'default'  => sprintf( '%s/images/bg.jpg', get_stylesheet_directory_uri() ),
 	'type'     => 'option',
 ) );
@@ -65,9 +65,9 @@ $wp_customize->add_control(
 		$wp_customize,
 		'backstretch-image',
 		array(
-			'label'       => __( 'Backstretch Image Upload', 'agency' ),
-			'section'     => 'agency-image',
-			'settings'    => 'agency-backstretch-image'
+			'label'       => __( 'Backstretch Image Upload', 'maidive' ),
+			'section'     => 'maidive-image',
+			'settings'    => 'maidive-backstretch-image'
 		)
 	)
 );
