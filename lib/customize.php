@@ -61,7 +61,7 @@ $wp_customize->add_setting( 'maidive-backstretch-image', array(
 ) );
  
 $wp_customize->add_control(
-	new Child_Agency_Image_Control(
+	new Child_Maidive_Image_Control(
 		$wp_customize,
 		'backstretch-image',
 		array(

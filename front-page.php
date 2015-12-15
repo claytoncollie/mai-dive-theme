@@ -6,30 +6,10 @@
  * @package Mai Dive 
  * @subpackage Customizations
  */
- 
-add_action( 'wp_enqueue_scripts', 'maidive_enqueue_scripts' );
-/**
- * Enqueue Scripts
- */
-function maidive_enqueue_scripts() {
-
-	if ( is_active_sidebar( 'home-top' ) || is_active_sidebar( 'home-middle' ) || is_active_sidebar( 'home-bottom' ) ) {
-	
-		wp_enqueue_script( 'scrollTo', get_stylesheet_directory_uri() . '/js/jquery.scrollTo.min.js', array( 'jquery' ), '1.4.5-beta', true );
-		wp_enqueue_script( 'localScroll', get_stylesheet_directory_uri() . '/js/jquery.localScroll.min.js', array( 'scrollTo' ), '1.2.8b', true );
-		wp_enqueue_script( 'home', get_stylesheet_directory_uri() . '/js/home.js', array( 'localScroll' ), '', true );
-		
-	}
-}
-
 add_action( 'genesis_meta', 'maidive_home_genesis_meta' );
-/**
- * Add widget support for homepage. If no widgets active, display the default loop.
- *
- */
 function maidive_home_genesis_meta() {
 
-	if ( is_active_sidebar( 'home-top' ) || is_active_sidebar( 'home-middle' ) || is_active_sidebar( 'home-bottom' ) ) {
+	if ( is_front_page() ) {
 
 		//* Force content-sidebar layout setting
 		add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
@@ -48,9 +28,6 @@ function maidive_home_genesis_meta() {
 
 		//* Add homepage widgets
 		add_action( 'genesis_loop', 'maidive_homepage_widgets' );
-		
-		//* Modify length of post excerpts
-		add_filter( 'excerpt_length', 'maidive_home_excerpt_length' );
 
 	}
 
@@ -78,18 +55,7 @@ function maidive_homepage_widgets() {
 		'before' => '<div id="home-middle" class="home-middle widget-area"><div class="wrap">',
 		'after'  => '</div></div>',
 	) );
-	
-	genesis_widget_area( 'home-bottom', array(
-		'before' => '<div id="home-bottom" class="home-bottom widget-area"><div class="wrap">',
-		'after'  => '</div></div>',
-	) );
 
-}
-
-function maidive_home_excerpt_length( $length ) {
-
-	return 35;
-    
 }
 
 genesis();
