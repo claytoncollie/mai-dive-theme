@@ -14,7 +14,7 @@ function maidive_single_adventure_genesis_meta() {
 	add_filter( 'genesis_attr_body', 'maidive_schema_service', 20 );
 			
 	//* Force layout
-	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_content_sidebar' );	
+	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_content_sidebar' );
 	
 	// Remove defualt sidebars
 	remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );

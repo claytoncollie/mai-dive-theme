@@ -143,7 +143,7 @@ Defaults
 --------------------------------------------- */
 
 body {
-	color: #666;
+	color: #444444;
 	font-family: 'Droid Serif', serif;
 	font-size: 16px;
 	font-weight: 400;
@@ -230,6 +230,10 @@ blockquote::before {
 
 cite {
 	font-style: normal;
+}
+
+.more-link {
+	display: block;
 }
 
 /* Headings
@@ -911,7 +915,6 @@ Site Header
     font-size: 14px;
     color: #f3f3f3;
     font-family: 'Spinnaker', sans-serif;
-    letter-spacing: 1px;
 }
 
 .site-header .header-widget-area .widget_text a:hover {
@@ -920,7 +923,7 @@ Site Header
 }
 
 .site-header .header-widget-area .widget_text .fa {
-	margin-left: 10px;
+	margin-left: 20px;
 }
 
 
@@ -1678,12 +1681,6 @@ Site Specific Styling
 	color: #333;
 }
 
-.single-maidive_gallery .content {
-	background-color: #ffffff;
-	border-radius: 5px;
-	padding: 40px;
-}
-
 .page-template-page-reviews .sidebar {
 	background-color: #ffffff;
 	padding: 40px;
@@ -1729,10 +1726,6 @@ Site Specific Styling
 /* ====================================================================================================================
  * BASE STYLES
  * ====================================================================================================================*/
-.flexslider {
-  margin: 0;
-  padding: 0;
-}
 .flexslider .slides > li {
   display: none;
   -webkit-backface-visibility: hidden;
@@ -1764,10 +1757,6 @@ html[xmlns] .flexslider .slides {
 .flexslider {
   position: relative;
   zoom: 1;
-  -webkit-box-shadow: '' 0 1px 4px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: '' 0 1px 4px rgba(0, 0, 0, 0.2);
-  -o-box-shadow: '' 0 1px 4px rgba(0, 0, 0, 0.2);
-  box-shadow: '' 0 1px 4px rgba(0, 0, 0, 0.2);
 }
 .flexslider .slides {
   zoom: 1;
@@ -1946,7 +1935,7 @@ html[xmlns] .flexslider .slides {
 /* ====================================================================================================================
  * RESPONSIVE
  * ====================================================================================================================*/
-@media screen and (max-width: 860px) {
+@media screen and (max-width: 800px) {
   .flex-direction-nav .flex-prev {
     opacity: 1;
     left: 10px;

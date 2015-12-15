@@ -9,7 +9,10 @@
 
 add_action( 'genesis_meta', 'maidive_single_accomodation_genesis_meta' );
 function maidive_single_accomodation_genesis_meta() {
-		
+					
+	//* Force layout
+	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_content_sidebar' );
+	
 	// Change Schema
 	add_filter( 'genesis_attr_body', 'maidive_schema_service', 20 );
 	

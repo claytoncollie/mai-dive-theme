@@ -53,6 +53,9 @@ function maidive_theme_setup() {
 	add_image_size( 'gallery-full', 1060, 600, TRUE );
 	//add_image_size( 'home-middle', 380, 380, TRUE );
 	
+	// Add layout support for custom post type
+	add_post_type_support( 'maidive_gallery', array('genesis-layouts') );
+	
 	//* Add support for custom background
 	add_theme_support( 'custom-background' ); 
 	
@@ -107,23 +110,25 @@ function maidive_theme_setup() {
 		'name'        => __( 'Home Middle', 'maidive' ),
 		'description' => __( 'This is the middle section of the homepage.', 'maidive' ),
 	) );
-	
 	genesis_register_sidebar( array(
 		'id'          => 'sidebar-awards',
 		'name'        => __( 'Sidebar - Awards', 'maidive' ),
 		'description' => __( 'Sidebar to put on reviews template.', 'maidive' ),
 	) );
-	
 	genesis_register_sidebar( array(
 		'id'          => 'sidebar-adventures',
 		'name'        => __( 'Sidebar - Adventures', 'maidive' ),
 		'description' => __( 'Sidebar for single page templates associated with Adventures custom post type.', 'maidive' ),
 	) );
-	
 	genesis_register_sidebar( array(
 		'id'          => 'sidebar-accomodations',
 		'name'        => __( 'Sidebar - Accomodations', 'maidive' ),
 		'description' => __( 'Sidebar for single page templates associated with Accomodations custom post type.', 'maidive' ),
+	) );
+	genesis_register_sidebar( array(
+		'id'          => 'sidebar-gallery',
+		'name'        => __( 'Sidebar - Gallery', 'maidive' ),
+		'description' => __( 'Sidebar for single page templates associated with Gallery custom post type.', 'maidive' ),
 	) );
 	genesis_register_sidebar( array(
 		'id'          => 'watch-video',
