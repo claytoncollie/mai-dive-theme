@@ -19,63 +19,30 @@ function maidive_page_reviews_genesis_meta() {
 		
 	/** Add custom loop */
 	add_action( 'genesis_sidebar', 'maidive_awards_custom_loop' );
-	
-	//Filter Genesis H1 Post Titles to remove hyperlinks on Category pages
-	add_filter( 'genesis_post_title_output', 'maidive_post_title_output', 15 );
-	
-
 		
 }
 
 
 // Show all posts in this custom post type
 function maidive_awards_custom_loop() {
- 
-    global $query_args; 
     
-  	$args = array(
-		'post_type' => 'maidive_awards',
-		'posts_per_page'   => -1,
-    );
-	
-	//* Remove the post content (requires HTML5 theme support)
-	remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
-	
-	// Add post title to loop header
-	remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
+  	$awards = get_pages(
+		array(
+			'post_type' => 'maidive_award',
+			'posts_per_page' => -1
+    	)
+	);
 	
 	echo '<section class="widget">';
 		echo '<h4 class="widget-title">Awards</h4>';
-	
-    genesis_custom_loop( wp_parse_args($query_args, $args) );
-
+			foreach( $awards as $award ):
+				echo '<p>'.get_the_post_thumbnail( $award->ID ).'</p>';
+    		endforeach;
 	echo '</section>';
  
 }
 
-//Filter Genesis H1 Post Titles to remove hyperlinks on Category pages
-function maidive_post_title_output( $title ) {
-	
-	$title = apply_filters( 'genesis_post_title_text', get_the_title() );
 
-	$wrap = 'h2';
-
-	//* Also, if HTML5 with semantic headings, wrap in H1
-	$wrap = genesis_html5() && genesis_get_seo_option( 'semantic_headings' ) ? 'h2' : $wrap;
-
-	//* Build the output
-	$output = genesis_markup( array(
-		'html5'   => "<{$wrap} %s>",
-		'xhtml'   => sprintf( '<%s class="entry-title">%s</%s>', $wrap, $title, $wrap ),
-		'context' => 'entry-title',
-		'echo'    => false,
-	) );
-
-	$output .= genesis_html5() ? "{$title}</{$wrap}>" : '';
-
-	return $output;
-
-}
 
 // Run the Genesis loop
 genesis();

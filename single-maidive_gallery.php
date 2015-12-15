@@ -12,20 +12,50 @@ function maidive_single_gallery_genesis_meta() {
 
 	if ( is_singular( 'maidive_gallery' ) ) {
 		
+		//* Force full-width-content layout setting
+		add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+
 		// Change Schema
 		add_filter( 'genesis_attr_body', 'maidive_schema_service', 20 );
 				
-		//* Force layout
-		add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_content_sidebar' );	
+		//* Enqueue scripts and styles
+		add_action( 'wp_enqueue_scripts', 'rc_load_object_scripts' );
 		
-		// Remove defualt sidebars
-		remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
+		// Remove default loop
+		remove_action('genesis_loop','genesis_do_loop');
 		
-		//* Add custom sidebar
-		add_action( 'genesis_sidebar', 'maidive_sidebar_gallery' );
+		// Add gallery loop from Advanced Custom Fields		
+		add_action('genesis_loop','maidive_gallery_do_loop');
+	}
+
+}
+
+// Enqueue scripts
+function rc_load_object_scripts() {
+
+	wp_enqueue_script( 'flex-slider', get_bloginfo( 'stylesheet_directory' ) . '/js/flex-slider.js', array( 'jquery' ), '1.0.0' );
+
+}
+
+// Gallery Loop
+function maidive_gallery_do_loop() {
 	
+	$images = get_field('maidive_gallery_photos');
+
+	if( $images ) {
+		echo '<div id="slider" class="flexslider">';
+			echo '<ul class="slides">';
+				foreach( $images as $image ): 
+					echo '<li data-thumb="'.$image['sizes']['thumbnail'].'">';
+						echo '<img src="'.$image['url'].'" alt="'.$image['alt'].'" />';
+					echo '</li>';
+				endforeach;
+			echo '</ul>';
+		echo '</div>';
 	}
 }
+
+
 
 
 // Change schema to Service
@@ -38,15 +68,7 @@ function maidive_schema_service( $attributes ) {
 }
 
 
-// Custom sidebar only for gallerys
-function maidive_sidebar_gallery() {
 
-	genesis_widget_area( 'sidebar-gallery', array(
-		'before' => '',
-		'after'  => '',
-	) );
-	
-}
 	
 
 //* Run the Genesis loop

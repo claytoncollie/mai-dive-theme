@@ -63,8 +63,7 @@ function maidive_theme_setup() {
 		//* Load scripts only if custom backstretch image is being used
 		if ( ! empty( $image ) ) {
 	
-			wp_enqueue_script( 'maidive-backstretch', get_bloginfo( 'stylesheet_directory' ) . '/js/backstretch.js', array( 'jquery' ), '1.0.0' );
-			wp_enqueue_script( 'maidive-backstretch-set', get_bloginfo( 'stylesheet_directory' ).'/js/backstretch-set.js' , array( 'jquery', 'maidive-backstretch' ), '1.0.0' );
+			wp_enqueue_script( 'maidive-backstretch-set', get_bloginfo( 'stylesheet_directory' ).'/js/backstretch-set.js' , array( 'jquery' ), '1.0.0' );
 	
 			wp_localize_script( 'maidive-backstretch-set', 'BackStretchImg', array( 'src' => str_replace( 'http:', '', $image ) ) );
 		
@@ -73,8 +72,8 @@ function maidive_theme_setup() {
 	}
 	
 	//* Add new image sizes
-	add_image_size( 'home-bottom', 380, 150, TRUE );
-	add_image_size( 'home-middle', 380, 380, TRUE );
+	add_image_size( 'gallery-full', 1060, 600, TRUE );
+	//add_image_size( 'home-middle', 380, 380, TRUE );
 	
 	//* Add support for custom background
 	add_theme_support( 'custom-background' ); 
@@ -184,5 +183,8 @@ function maidive_theme_setup() {
 	
 	//* Unregister Genesis specific functions, page layouts, and page templates
 	require_once( trailingslashit( get_stylesheet_directory() ) . '/lib/genesis-unregister-functions.php' );
+	
+	//* Inline logo
+	require_once( trailingslashit( get_stylesheet_directory() ) . '/lib/maidive-inline-logo.php' );
 
 }

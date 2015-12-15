@@ -33,9 +33,9 @@ function maidive_archive_gallery_class( $classes ) {
 	
 	global $wp_query;
 		
-	$classes[] = 'one-fourth';
+	$classes[] = 'one-half';
 	
-	if( 0 == $wp_query->current_post || 0 == $wp_query->current_post % 4 )
+	if( 0 == $wp_query->current_post || 0 == $wp_query->current_post % 2 )
 		$classes[] = 'first';
 	return $classes;
 }
@@ -44,7 +44,7 @@ function maidive_archive_gallery_class( $classes ) {
 function maidive_archive_gallery_featured_image() {
 
 	$image_args = array(
-		'size' => 'maidive-archive-gallery',
+		'size' => 'medium',
 	);
 
 	$image = genesis_get_image( $image_args );

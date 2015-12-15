@@ -1,15 +1,7 @@
 jQuery(function( $ ){
 	
 	// Dynamic front page slideshow and window height
-	var adminHeight = $('#wpadminbar').outerHeight();
-	var siteHeaderHeight = $('.site-header').outerHeight();
-	var siteInnerHeight = $('.site-inner').outerHeight();
-	var windowHeight = $(window).height();
-	var newHeight = windowHeight - siteHeaderHeight - siteInnerHeight - adminHeight;
-	
-	$('.home-top') .css({'height': newHeight +'px'});
-		
-	$(window).resize(function(){
+	if(window.innerWidth > 800) {
 		var adminHeight = $('#wpadminbar').outerHeight();
 		var siteHeaderHeight = $('.site-header').outerHeight();
 		var siteInnerHeight = $('.site-inner').outerHeight();
@@ -17,11 +9,23 @@ jQuery(function( $ ){
 		var newHeight = windowHeight - siteHeaderHeight - siteInnerHeight - adminHeight;
 		
 		$('.home-top') .css({'height': newHeight +'px'});
+	}
+		
+	$(window).resize(function(){
+		if(window.innerWidth > 800) {
+			var adminHeight = $('#wpadminbar').outerHeight();
+			var siteHeaderHeight = $('.site-header').outerHeight();
+			var siteInnerHeight = $('.site-inner').outerHeight();
+			var windowHeight = $(window).height();
+			var newHeight = windowHeight - siteHeaderHeight - siteInnerHeight - adminHeight;
+			
+			$('.home-top') .css({'height': newHeight +'px'});
+		}
 	});
 	
 	
 	// Responsive Menu
-	$("header .genesis-nav-menu, .nav-primary .genesis-nav-menu").addClass("responsive-menu").before('<div class="responsive-menu-icon"></div>');
+	$("header .genesis-nav-menu, .nav-primary .genesis-nav-menu").addClass("responsive-menu").before('<div class="responsive-menu-icon"><span class="menu-text">Menu</span></div>');
 
 	$(".responsive-menu-icon").click(function(){
 		$(this).next("header .genesis-nav-menu, .nav-primary .genesis-nav-menu").slideToggle();
