@@ -10,19 +10,16 @@
 add_action( 'genesis_meta', 'maidive_archive_accomodation_genesis_meta' );
 function maidive_archive_accomodation_genesis_meta() {
 
-	if ( is_post_type_archive( 'maidive_accomodation' ) ) {
-		
-		// 2. Add post class for single articles
-		add_filter( 'post_class', 'maidive_archive_accomodation_class' );
-		
-		//* Force full-width-content layout setting
-		add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
-		
-		//* Add featured image in archive view Entry Content above Excerpt
-		remove_action( 'genesis_entry_content', 'genesis_do_post_image', 8 );
+	// 2. Add post class for single articles
+	add_filter( 'post_class', 'maidive_archive_accomodation_class' );
+	
+	//* Force full-width-content layout setting
+	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+	
+	//* Add featured image in archive view Entry Content above Excerpt
+	remove_action( 'genesis_entry_content', 'genesis_do_post_image', 8 );
+	add_action( 'genesis_entry_header', 'maidive_archive_accomodation_featured_image', 8 );
 
-		
-	}
 }
 
 // 3.
@@ -37,8 +34,20 @@ function maidive_archive_accomodation_class( $classes ) {
 	return $classes;
 }
 
+// Add featured image for specific size
+function maidive_archive_accomodation_featured_image() {
 
+	$image_args = array(
+		'size' => 'medium',
+	);
 
+	$image = genesis_get_image( $image_args );
+
+	if ( $image ) {
+		echo '<a href="' . get_permalink() . '">' . $image .'</a>';
+	}
+
+}
 
 // Run the Genesis loop
 genesis();

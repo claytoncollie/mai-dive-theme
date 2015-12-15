@@ -10,23 +10,14 @@
 add_action( 'genesis_meta', 'maidive_single_gallery_genesis_meta' );
 function maidive_single_gallery_genesis_meta() {
 
-	if ( is_singular( 'maidive_gallery' ) ) {
-		
-		//* Force full-width-content layout setting
-		add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
-
-		// Change Schema
-		add_filter( 'genesis_attr_body', 'maidive_schema_service', 20 );
-				
-		//* Enqueue scripts and styles
-		add_action( 'wp_enqueue_scripts', 'rc_load_object_scripts' );
-		
-		// Remove default loop
-		remove_action('genesis_loop','genesis_do_loop');
-		
-		// Add gallery loop from Advanced Custom Fields		
-		add_action('genesis_loop','maidive_gallery_do_loop');
-	}
+	//* Force full-width-content layout setting
+	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+			
+	//* Enqueue scripts and styles
+	add_action( 'wp_enqueue_scripts', 'rc_load_object_scripts' );
+	
+	// Add gallery loop from Advanced Custom Fields		
+	add_action('genesis_loop','maidive_gallery_do_loop', 12);
 
 }
 
@@ -55,21 +46,6 @@ function maidive_gallery_do_loop() {
 	}
 }
 
-
-
-
-// Change schema to Service
-function maidive_schema_service( $attributes ) {
-  
-    $attributes['itemtype']  = 'http://schema.org/Service';
- 
-    return $attributes;
- 
-}
-
-
-
-	
 
 //* Run the Genesis loop
 genesis();

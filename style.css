@@ -754,11 +754,15 @@ img.alignright,
 
 .entry-title {
 	color: #232264;
-	font-size: 46px;
+	font-size: 36px;
 }
 
 .entry-title a {
 	color: #232264;
+}
+
+.post-type-archive .entry-title {
+	font-size: 26px;
 }
 
 .widget-title {
@@ -1678,6 +1682,18 @@ Site Specific Styling
 	background-color: #ffffff;
 	border-radius: 5px;
 	padding: 40px;
+}
+
+.page-template-page-reviews .sidebar {
+	background-color: #ffffff;
+	padding: 40px;
+	border-radius: 5px;
+}
+
+.page-template-page-reviews .sidebar .widget {
+	margin-bottom: 0;
+	border-radius: 0;
+	padding: 0;
 }
 
 
