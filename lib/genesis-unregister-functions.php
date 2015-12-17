@@ -56,6 +56,9 @@ remove_post_type_support( 'page', 'genesis-scripts' );	// Pages
 //* Remove Genesis in-post SEO Settings
 remove_action( 'admin_menu', 'genesis_add_inpost_seo_box' );
 
+// Remove layout support on archive
+remove_theme_support( 'genesis-archive-layouts' );
+
 //* Remove Genesis Layout Settings
 //remove_theme_support( 'genesis-inpost-layouts' );
 

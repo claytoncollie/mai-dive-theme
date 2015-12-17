@@ -125,6 +125,11 @@ function maidive_theme_setup() {
 		'description' => __( 'Sidebar for single page templates associated with Gallery custom post type.', 'maidive' ),
 	) );
 	genesis_register_sidebar( array(
+		'id'          => 'sidebar-courses',
+		'name'        => __( 'Sidebar - Courses', 'maidive' ),
+		'description' => __( 'Sidebar for single page templates associated with Courses custom post type.', 'maidive' ),
+	) );
+	genesis_register_sidebar( array(
 		'id'          => 'watch-video',
 		'name'        => __( 'Watch Video', 'maidive' ),
 	) );
