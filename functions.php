@@ -169,9 +169,18 @@ function maidive_load_scripts() {
 // Backstretch scripts
 function maidive_enqueue_backstretch_scripts() {
 	
-	$image = get_option( 'maidive-backstretch-image', sprintf( '%s/images/bg.jpg', get_stylesheet_directory_uri() ) );
+	wp_enqueue_script( 'video-js', get_stylesheet_directory_uri() . '/js/video.min.js', array( 'jquery' ) );
+	wp_enqueue_script( 'bigvideo', get_stylesheet_directory_uri() . '/js/bigvideo.js', array( 'video-js' ) );
+	wp_enqueue_script( 'bigvideo-init', get_stylesheet_directory_uri() . '/js/bigvideo-init-video.js', array( 'bigvideo' ) );
 	
-	//* Load scripts only if custom backstretch image is being used
+	$bigvideo_src = array( 'src' => str_replace( 'http:', '', get_option( 'maidive-default-background-video' ) ) );
+	wp_localize_script( 'bigvideo-init', 'BigVideo', $bigvideo_src );
+	
+	/* Load scripts only if custom backstretch image is being used
+	//wp_enqueue_script( 'backstretch', get_bloginfo( 'stylesheet_directory' ).'/js/backstretch.js' , array( 'jquery' ), '1.0.0' );
+	
+	//$image = get_option( 'maidive-backstretch-image', sprintf( '%s/images/bg.jpg', get_stylesheet_directory_uri() ) );
+	
 	if ( ! empty( $image ) ) {
 
 		wp_enqueue_script( 'maidive-backstretch-set', get_bloginfo( 'stylesheet_directory' ).'/js/backstretch-set.js' , array( 'jquery' ), '1.0.0' );
@@ -179,6 +188,24 @@ function maidive_enqueue_backstretch_scripts() {
 		wp_localize_script( 'maidive-backstretch-set', 'BackStretchImg', array( 'src' => str_replace( 'http:', '', $image ) ) );
 	
 	}
+	
+	if( !is_front_page() ) {
+		wp_enqueue_script( 'backstretch-fullscreen-set', get_bloginfo( 'stylesheet_directory' ).'/js/backstretch-fullscreen-set.js' );
+	}
+	
+	if( has_post_thumbnail() && !is_singular('attorney') && !is_post_type_archive() && !is_search() ) {
+		
+		// For all page except those listed
+		$featured_image_url = wp_get_attachment_url( get_post_thumbnail_id() );
+		$backstretch_src = array( 'src' => $featured_image_url );
+		wp_localize_script( 'backstretch-fullscreen-set', 'BackStretchImg', $backstretch_src );
+		
+	}elseif( !is_singular('attorney')){
+		
+		// If it is a random page without any criteria or featured image, then load default image
+		$backstretch_src = array( 'src' => str_replace( 'http:', '', get_option( 'krcl-default-image' ) ) );
+		wp_localize_script( 'backstretch-fullscreen-set', 'BackStretchImg', $backstretch_src );
+	}*/
 
 }
 

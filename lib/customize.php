@@ -49,6 +49,8 @@ class Child_Maidive_Image_Control extends WP_Customize_Image_Control {
 
 global $wp_customize;
 
+// Backstretch Image
+//------------------------------------------------------------------
 $wp_customize->add_section( 'maidive-image', array(
 	'title'    => __( 'Backstretch Image', 'maidive' ),
 	'description' => __( '<p>Use the included default image or personalize your site by uploading your own image for the background.</p><p>The default image is <strong>1600 x 1000 pixels</strong>.</p>', 'maidive' ),
@@ -68,6 +70,31 @@ $wp_customize->add_control(
 			'label'       => __( 'Backstretch Image Upload', 'maidive' ),
 			'section'     => 'maidive-image',
 			'settings'    => 'maidive-backstretch-image'
+		)
+	)
+);
+
+
+// Video Background
+//------------------------------------------------------------------
+$wp_customize->add_section( 'maidive-default-video', array(
+	'title'    => __( 'Default Video', 'maidive' ),
+	'description' => __( '<p>Set the default video if one is not set on the specific page.</p>', 'maidive' ),
+	'priority' => 75,
+) );
+
+$wp_customize->add_setting( 'maidive-default-background-video', array(
+	'type'     => 'option',
+) );
+ 
+$wp_customize->add_control(
+	new Child_Maidive_Image_Control(
+		$wp_customize,
+		'default-background-video',
+		array(
+			'label'       => __( 'Default Video Upload', 'maidive' ),
+			'section'     => 'maidive-default-video',
+			'settings'    => 'maidive-default-background-video'
 		)
 	)
 );
