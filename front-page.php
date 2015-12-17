@@ -39,15 +39,36 @@ function maidive_body_class( $classes ) {
 	return $classes;
 	
 }
-
 function maidive_homepage_top() {
+	
+	echo '<div id="home-top" class="home-top widget-area">';
+	
+		echo '<div class="wrap">';
+	
+			genesis_widget_area( 'home-top-left', array(
+				'before' => '<div class="first three-fourths widget-area hero">',
+				'after'  => '</div>',
+			) );
+		
+			genesis_widget_area( 'home-top-right', array(
+				'before' => '<div class="one-fourth widget-area trip-advisor">',
+				'after'  => '</div>',
+			) );
+	
+		echo '</div>';
+		
+	echo '</div>';
+	
+}
+
+/*function maidive_homepage_top() {
 
 	genesis_widget_area( 'home-top', array(
 		'before' => '<div id="home-top" class="home-top widget-area"><div class="wrap">',
 		'after'  => '</div></div>',
 	) );
 	
-}
+}*/
 
 function maidive_homepage_widgets() {
 	

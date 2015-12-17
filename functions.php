@@ -94,10 +94,20 @@ function maidive_theme_setup() {
 
 	//* Register widget areas
 	//--------------------------------------------------------------------------------------------
+	//genesis_register_sidebar( array(
+		//'id'          => 'home-top',
+		//'name'        => __( 'Home Top', 'maidive' ),
+		//'description' => __( 'This is the top section of the homepage.', 'maidive' ),
+	//) );
 	genesis_register_sidebar( array(
-		'id'          => 'home-top',
-		'name'        => __( 'Home Top', 'maidive' ),
-		'description' => __( 'This is the top section of the homepage.', 'maidive' ),
+		'id'          => 'home-top-left',
+		'name'        => __( 'Home Top Left', 'maidive' ),
+		'description' => __( 'This is the top left section of the homepage. 2/3rds wide', 'maidive' ),
+	) );
+	genesis_register_sidebar( array(
+		'id'          => 'home-top-right',
+		'name'        => __( 'Home Top Right', 'maidive' ),
+		'description' => __( 'This is the top right section of the homepage. 1/3rd wide', 'maidive' ),
 	) );
 	genesis_register_sidebar( array(
 		'id'          => 'home-middle',

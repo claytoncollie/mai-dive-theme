@@ -1243,47 +1243,55 @@ Content Area
     top: 50%;
     transform: translateY(-50%);
 	text-align: left;
-	width: 960px;
+	width: 100%;
 }
 
-.home-top .widget-title {
+.home-top .hero .widget-title {
 	color: #fff;
-	font-size: 80px;
-	line-height: 1;
+	font-size: 70px;
+	line-height: 1.25;
 	text-transform: none;
 	text-shadow: 2px 2px 2px #28ACE2;
 }
 
-.home-top .textwidget {
-	width: 768px;
+.home-top .hero .textwidget {
+	width: 100%;
 }
 
-.home-top .textwidget p {
+.home-top .hero .textwidget p {
 	font-size: 28px;
 	text-shadow: 1px 1px 1px #000;
 }
 
-.home-top .button {
+.home-top .hero .button {
 	background-color: #28ACE2;
 	border-radius: 5px;
 	color: #ffffff;
 	text-transform: uppercase;
 }
 
-.home-top .secondary {
+.home-top .hero .secondary {
 	margin-left: 20px;
 	font-style: italic;
 	font-family: 'Droid Serif', serif;
 	color: #ffffff;
 }
 
-.home-top .secondary:hover {
+.home-top .hero .secondary:hover {
 	text-decoration: underline;
 }
 
-.home-top .widget .button:hover {
+.home-top .hero .widget .button:hover {
 	background-color: #232264;
 	color: #fff;
+}
+
+.home-top .trip-advisor .widget {
+	float: right;
+}
+
+.home-top .trip-advisor .TA_selfserveprop {
+	box-shadow: 2px 2px 0px #28ACE2;
 }
 
 .home-middle .widget img {
