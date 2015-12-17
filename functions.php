@@ -151,6 +151,9 @@ function maidive_theme_setup() {
 	
 	//* Inline logo
 	require_once( trailingslashit( get_stylesheet_directory() ) . '/lib/maidive-inline-logo.php' );
+	
+	//* Simple social share filters
+	require_once( get_stylesheet_directory() . '/lib/simple-social-share.php' );
 
 }
 
