@@ -47,8 +47,8 @@ function maidive_theme_setup() {
 	add_action( 'wp_enqueue_scripts', 'maidive_load_scripts' );
 	
 	//* Add new image sizes
-	add_image_size( 'gallery-full', 1060, 600, TRUE );
-	//add_image_size( 'home-middle', 380, 380, TRUE );
+	//add_image_size( 'gallery-full', 1060, 600, TRUE );
+	//add_image_size( 'archive-thumbnail', 380, 380, TRUE );
 	
 	// Add layout support for custom post type
 	add_post_type_support( 'maidive_gallery', array('genesis-layouts') );
