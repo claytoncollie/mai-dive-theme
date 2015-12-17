@@ -46,18 +46,12 @@ function maidive_theme_setup() {
 	//* Enqueue Scripts
 	add_action( 'wp_enqueue_scripts', 'maidive_load_scripts' );
 	
-	//* Enqueue Backstretch script and prepare images for loading
-	add_action( 'wp_enqueue_scripts', 'maidive_enqueue_backstretch_scripts' );
-	
 	//* Add new image sizes
 	add_image_size( 'gallery-full', 1060, 600, TRUE );
 	//add_image_size( 'home-middle', 380, 380, TRUE );
 	
 	// Add layout support for custom post type
 	add_post_type_support( 'maidive_gallery', array('genesis-layouts') );
-	
-	//* Add support for custom background
-	add_theme_support( 'custom-background' ); 
 	
 	//* Add support for custom header
 	add_theme_support( 'custom-header', array(
@@ -164,48 +158,59 @@ function maidive_load_scripts() {
 	
 	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Spinnaker:400,700|Droid+Serif:400,700', array(), CHILD_THEME_VERSION );
 	
-}
+	$var_maidive_video_url_mp4 = get_field('maidive_video_url_mp4');
+	$var_maidive_video_url_webm = get_field('maidive_video_url_webm');
 	
-// Backstretch scripts
-function maidive_enqueue_backstretch_scripts() {
-	
-	wp_enqueue_script( 'video-js', get_stylesheet_directory_uri() . '/js/video.min.js', array( 'jquery' ) );
-	wp_enqueue_script( 'bigvideo', get_stylesheet_directory_uri() . '/js/bigvideo.js', array( 'video-js' ) );
-	wp_enqueue_script( 'bigvideo-init', get_stylesheet_directory_uri() . '/js/bigvideo-init-video.js', array( 'bigvideo' ) );
-	
-	$bigvideo_src = array( 'src' => str_replace( 'http:', '', get_option( 'maidive-default-background-video' ) ) );
-	wp_localize_script( 'bigvideo-init', 'BigVideo', $bigvideo_src );
-	
-	/* Load scripts only if custom backstretch image is being used
-	//wp_enqueue_script( 'backstretch', get_bloginfo( 'stylesheet_directory' ).'/js/backstretch.js' , array( 'jquery' ), '1.0.0' );
-	
-	//$image = get_option( 'maidive-backstretch-image', sprintf( '%s/images/bg.jpg', get_stylesheet_directory_uri() ) );
-	
-	if ( ! empty( $image ) ) {
-
-		wp_enqueue_script( 'maidive-backstretch-set', get_bloginfo( 'stylesheet_directory' ).'/js/backstretch-set.js' , array( 'jquery' ), '1.0.0' );
-
-		wp_localize_script( 'maidive-backstretch-set', 'BackStretchImg', array( 'src' => str_replace( 'http:', '', $image ) ) );
-	
-	}
-	
-	if( !is_front_page() ) {
-		wp_enqueue_script( 'backstretch-fullscreen-set', get_bloginfo( 'stylesheet_directory' ).'/js/backstretch-fullscreen-set.js' );
-	}
-	
-	if( has_post_thumbnail() && !is_singular('attorney') && !is_post_type_archive() && !is_search() ) {
+	if( is_mobile() && has_post_thumbnail() ) { 
 		
-		// For all page except those listed
+		// if it is not mobile, has a thumbnail, and do not have any contents in the custom fields for videos, show the psot thumbnail
+		wp_enqueue_script( 'maidive-backstretch-set', get_bloginfo( 'stylesheet_directory' ).'/js/backstretch-set.js', '', '1.0.0', false );	
 		$featured_image_url = wp_get_attachment_url( get_post_thumbnail_id() );
 		$backstretch_src = array( 'src' => $featured_image_url );
-		wp_localize_script( 'backstretch-fullscreen-set', 'BackStretchImg', $backstretch_src );
+		wp_localize_script( 'maidive-backstretch-set', 'BackStretchImg', $backstretch_src );
+	
+	}elseif( is_mobile() && !has_post_thumbnail() ) {	
 		
-	}elseif( !is_singular('attorney')){
+		// If it fails the first conditional by not having a post thumbnail, display default image from customizer
+		wp_enqueue_script( 'maidive-backstretch-set', get_bloginfo( 'stylesheet_directory' ).'/js/backstretch-set.js', '', '1.0.0', false );
+		$backstretch_src = array( 'src' => get_option( 'maidive-backstretch-image') );
+		wp_localize_script( 'maidive-backstretch-set', 'BackStretchImg', $backstretch_src );
+	
+	}elseif( has_post_thumbnail() && empty($var_maidive_video_url_mp4) && empty($var_maidive_video_url_webm) ) { 
 		
-		// If it is a random page without any criteria or featured image, then load default image
-		$backstretch_src = array( 'src' => str_replace( 'http:', '', get_option( 'krcl-default-image' ) ) );
-		wp_localize_script( 'backstretch-fullscreen-set', 'BackStretchImg', $backstretch_src );
-	}*/
+		// if it is not mobile, has a thumbnail, and do not have any contents in the custom fields for videos, show the psot thumbnail
+		wp_enqueue_script( 'maidive-backstretch-set', get_bloginfo( 'stylesheet_directory' ).'/js/backstretch-set.js', '', '1.0.0', false );		
+		$featured_image_url = wp_get_attachment_url( get_post_thumbnail_id() );
+		$backstretch_src = array( 'src' => $featured_image_url );
+		wp_localize_script( 'maidive-backstretch-set', 'BackStretchImg', $backstretch_src );
+		
+	}elseif( !empty($var_maidive_video_url_mp4) && !empty($var_maidive_video_url_webm) ){
+		
+		wp_enqueue_script( 'video-js', get_stylesheet_directory_uri() . '/js/video.min.js', '', '', true );
+		wp_enqueue_script( 'bigvideo-js', get_stylesheet_directory_uri() . '/js/bigvideo.js', array( 'video-js' ), '', true );
+		wp_enqueue_script( 'bigvideo-init', get_stylesheet_directory_uri() . '/js/bigvideo-init-video.js', array( 'bigvideo-js'), '1.0.0', true );
+		
+		// Show video if custom fields are set on individual pages
+		$bigvideo_mp4 = $var_maidive_video_url_mp4;
+		wp_localize_script( 'bigvideo-init', 'BigVideoLocalizeMp4', $bigvideo_mp4 );
+		
+		$bigvideo_webm = $var_maidive_video_url_webm;
+		wp_localize_script( 'bigvideo-init', 'BigVideoLocalizeWebm', $bigvideo_webm );
+		
+	}else{
+		
+		wp_enqueue_script( 'video-js', get_stylesheet_directory_uri() . '/js/video.min.js', '', '', true );
+		wp_enqueue_script( 'bigvideo-js', get_stylesheet_directory_uri() . '/js/bigvideo.js', array( 'video-js' ), '', true );
+		wp_enqueue_script( 'bigvideo-init', get_stylesheet_directory_uri() . '/js/bigvideo-init-video.js', array( 'bigvideo-js'), '1.0.0', true );
+		
+		//If no videos or post thumbnails are present, use default video set in customizer
+		$bigvideo_mp4 = get_option( 'maidive-background-video-mp4' );
+		wp_localize_script( 'bigvideo-init', 'BigVideoLocalizeMp4', $bigvideo_mp4 );
+		
+		$bigvideo_webm = get_option( 'maidive-background-video-webm' );
+		wp_localize_script( 'bigvideo-init', 'BigVideoLocalizeWebm', $bigvideo_webm );
+		
+	}
 
 }
 
@@ -227,6 +232,10 @@ function maidive_blog_genesis_meta() {
 		
 		//* Customize the post info function
 		add_filter( 'genesis_post_info', 'maidive_post_info_filter' );
+		function maidive_post_info_filter($post_info) {
+			$post_info = '[post_date] [post_categories before=""]';
+			return $post_info;
+		}
 				
 		//* Remove the entry meta in the entry header
 		add_action( 'genesis_entry_header', 'genesis_post_info', 12 );
@@ -235,12 +244,5 @@ function maidive_blog_genesis_meta() {
 		remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
 		add_action( 'genesis_sidebar', 'genesis_do_sidebar_alt' );
 		
-	}
-	
-	// Filter post info
-	function maidive_post_info_filter($post_info) {
-	
-		$post_info = '[post_date] [post_categories before=""]';
-		return $post_info;
-	}
+	}	
 }

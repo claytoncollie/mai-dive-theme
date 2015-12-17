@@ -52,7 +52,7 @@ global $wp_customize;
 // Backstretch Image
 //------------------------------------------------------------------
 $wp_customize->add_section( 'maidive-image', array(
-	'title'    => __( 'Backstretch Image', 'maidive' ),
+	'title'    => __( 'Default Background Image', 'maidive' ),
 	'description' => __( '<p>Use the included default image or personalize your site by uploading your own image for the background.</p><p>The default image is <strong>1600 x 1000 pixels</strong>.</p>', 'maidive' ),
 	'priority' => 75,
 ) );
@@ -77,24 +77,43 @@ $wp_customize->add_control(
 
 // Video Background
 //------------------------------------------------------------------
-$wp_customize->add_section( 'maidive-default-video', array(
-	'title'    => __( 'Default Video', 'maidive' ),
+$wp_customize->add_section( 'maidive-video', array(
+	'title'    => __( 'Default Background Video', 'maidive' ),
 	'description' => __( '<p>Set the default video if one is not set on the specific page.</p>', 'maidive' ),
 	'priority' => 75,
 ) );
-
-$wp_customize->add_setting( 'maidive-default-background-video', array(
-	'type'     => 'option',
-) );
- 
-$wp_customize->add_control(
-	new Child_Maidive_Image_Control(
-		$wp_customize,
-		'default-background-video',
-		array(
-			'label'       => __( 'Default Video Upload', 'maidive' ),
-			'section'     => 'maidive-default-video',
-			'settings'    => 'maidive-default-background-video'
-		)
-	)
-);
+	
+	// WebM file type
+	$wp_customize->add_setting( 'maidive-background-video-webm', array(
+		'type'     => 'option',
+	) );
+	 
+		$wp_customize->add_control(
+			'background-video-webm-textbox',
+			array(
+				'label'       => __( 'Vimeo URL - WebM', 'maidive' ),
+				'section'     => 'maidive-video',
+				'settings'    => 'maidive-background-video-webm',
+				'type' => 'text',
+			)
+		);
+	
+	// Mp4 file type
+	$wp_customize->add_setting( 'maidive-background-video-mp4', array(
+		'type'     => 'option',
+	) );
+	 
+		$wp_customize->add_control(
+			'background-video-mp4-textbox',
+			array(
+				'label'       => __( 'Vimeo URL - MP4', 'maidive' ),
+				'section'     => 'maidive-video',
+				'settings'    => 'maidive-background-video-mp4',
+				'type' => 'text',
+			)
+		);
+	
+	
+	
+	
+	
