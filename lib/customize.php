@@ -82,21 +82,7 @@ $wp_customize->add_section( 'maidive-video', array(
 	'description' => __( '<p>Set the default video if one is not set on the specific page.</p>', 'maidive' ),
 	'priority' => 75,
 ) );
-	
-	// WebM file type
-	$wp_customize->add_setting( 'maidive-background-video-webm', array(
-		'type'     => 'option',
-	) );
-	 
-		$wp_customize->add_control(
-			'background-video-webm-textbox',
-			array(
-				'label'       => __( 'Vimeo URL - WebM', 'maidive' ),
-				'section'     => 'maidive-video',
-				'settings'    => 'maidive-background-video-webm',
-				'type' => 'text',
-			)
-		);
+
 	
 	// Mp4 file type
 	$wp_customize->add_setting( 'maidive-background-video-mp4', array(
