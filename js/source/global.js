@@ -47,9 +47,14 @@ jQuery(function( $ ){
 	});
 	
 	// Watch Video Button
+	
+	$(".watch-video .show-text-button").addClass("hide")
+	
 	$(".watch-video").click(function(){
-		$(".site-header").toggleClass("hidden");
-		$(".site-container").toggleClass("hidden");
+		$(".site-header").toggleClass("hide");
+		$(".site-container").toggleClass("hide");
+		$(".hide-text-button").toggleClass("hide");
+		$(".show-text-button").toggleClass("show");
 	});
 });
 

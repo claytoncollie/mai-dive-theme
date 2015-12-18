@@ -27,9 +27,9 @@ function maidive_archive_accomodation_class( $classes ) {
 	
 	global $wp_query;
 		
-	$classes[] = 'one-half';
+	$classes[] = 'one-third';
 	
-	if( 0 == $wp_query->current_post || 0 == $wp_query->current_post % 2 )
+	if( 0 == $wp_query->current_post || 0 == $wp_query->current_post % 3 )
 		$classes[] = 'first';
 	return $classes;
 }

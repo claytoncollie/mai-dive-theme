@@ -1672,7 +1672,7 @@ Site Footer
 /*
 Site Specific Styling
 ---------------------------------------------------------------------------------------------------*/
-.hidden {
+.hide {
 	display: visibility !important;
 	-webkit-transition: opacity .4s ease-in-out;
 	-moz-transition:    opacity .4s ease-in-out;
@@ -1682,10 +1682,14 @@ Site Specific Styling
 	opacity: 0;
 }
 
-.watch-video {
-	position: fixed;
-	bottom: 40px;
-	right: 40px;
+.show {
+	display: visibility !important;
+	-webkit-transition: opacity .4s ease-in-out;
+	-moz-transition:    opacity .4s ease-in-out;
+	-ms-transition:     opacity .4s ease-in-out;
+	-o-transition:      opacity .4s ease-in-out;
+	transition:         opacity .4s ease-in-out;
+	opacity: 1;
 }
 
 .watch-video a {
@@ -1695,6 +1699,9 @@ Site Specific Styling
 	padding: 10px 20px;
 	font-family: 'Spinnaker', san-serif;
 	text-transform: uppercase;
+	position: fixed;
+	bottom: 40px;
+	right: 40px;
 }
 
 .watch-video a:hover {
