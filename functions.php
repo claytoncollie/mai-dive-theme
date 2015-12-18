@@ -140,6 +140,16 @@ function maidive_theme_setup() {
 		'description' => __( 'Sidebar for single page templates associated with Courses custom post type.', 'maidive' ),
 	) );
 	genesis_register_sidebar( array(
+		'id'          => 'sidebar-landing',
+		'name'        => __( 'Sidebar - Landing Page', 'maidive' ),
+		'description' => __( 'Sidebar for landing page template.', 'maidive' ),
+	) );
+	genesis_register_sidebar( array(
+		'id'          => 'header-right-landing',
+		'name'        => __( 'Header Right - Landing Page', 'maidive' ),
+		'description' => __( 'Header right area for custom menu for landing page template.', 'maidive' ),
+	) );
+	genesis_register_sidebar( array(
 		'id'          => 'watch-video',
 		'name'        => __( 'Watch Video', 'maidive' ),
 	) );

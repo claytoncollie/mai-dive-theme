@@ -942,7 +942,8 @@ Site Header
 Site Navigation
 ---------------------------------------------------------------------------------------------------- */
 
-.genesis-nav-menu {
+.genesis-nav-menu,
+.maidive-landing #menu-landing-page {
 	clear: both;
 	color: #fff;
 	font-family: 'Spinnaker', sans-serif;
@@ -951,22 +952,26 @@ Site Navigation
 	width: 100%;
 }
 
-.genesis-nav-menu .menu-item {
+.genesis-nav-menu .menu-item,
+.maidive-landing #menu-landing-page .menu-item {
 	display: inline-block;
 	text-align: left;
 }
 
-.genesis-nav-menu .menu-item.button {
+.genesis-nav-menu .menu-item.button,
+.maidive-landing #menu-landing-page .menu-item.button {
 	background-color: #28ACE2;
 	color: #ffffff;
 }
 
-.genesis-nav-menu .menu-item.button a:hover {
+.genesis-nav-menu .menu-item.button a:hover,
+.maidive-landing #menu-landing-page .menu-item.button a:hover{
 	background-color: #232264;
 	border-color: #232264;
 }
 
-.genesis-nav-menu a {
+.genesis-nav-menu a,
+.maidive-landing #menu-landing-page a {
 	border-bottom: 5px solid transparent;
 	color: #fff;
 	display: block;
@@ -976,7 +981,10 @@ Site Navigation
 
 .genesis-nav-menu a:hover,
 .genesis-nav-menu .current-menu-item > a,
-.genesis-nav-menu .v .current-menu-item > a:hover {
+.genesis-nav-menu .v .current-menu-item > a:hover,
+.maidive-landing #menu-landing-page a:hover,
+.maidive-landing #menu-landing-page .current-menu-item > a,
+.maidive-landing #menu-landing-page .v .current-menu-item > a:hover {
 	
 	border-color: #28ACE2;
 	color: #ffffff;
@@ -1073,6 +1081,10 @@ Site Navigation
 	background: rgba( 35,34,100,.8);
 	margin-top: 10px;
 	border-radius: 5px;
+}
+
+.maidive-landing .site-header .widget-area .widget_nav_menu {
+	margin-top: 50px;
 }
 
 /* Secondary Navigation
@@ -1702,6 +1714,11 @@ Site Specific Styling
 	padding: 0;
 }
 
+/* Landing page
+-------------------------------------------------------------------*/
+.maidive-landing .header-widget-area {
+	display: none;
+}
 
 /*
  * jQuery FlexSlider v2.6.0
