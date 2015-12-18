@@ -47,8 +47,7 @@ function maidive_theme_setup() {
 	add_action( 'wp_enqueue_scripts', 'maidive_load_scripts' );
 	
 	//* Add new image sizes
-	//add_image_size( 'gallery-full', 1060, 600, TRUE );
-	//add_image_size( 'archive-thumbnail', 380, 380, TRUE );
+	add_image_size( 'archive-thumbnail', 475, 130, TRUE );
 	
 	// Add layout support for custom post type
 	add_post_type_support( 'maidive_gallery', array('genesis-layouts') );
@@ -91,6 +90,10 @@ function maidive_theme_setup() {
 	
 	// Blog specific actions
 	add_action( 'genesis_meta', 'maidive_blog_genesis_meta' );
+	
+	//* Add featured image in archive view Entry Content above Excerpt
+	remove_action( 'genesis_entry_content', 'genesis_do_post_image', 8 );
+	add_action( 'genesis_entry_header', 'maidive_featured_image', 8 );
 
 	//* Register widget areas
 	//--------------------------------------------------------------------------------------------
@@ -186,7 +189,7 @@ function maidive_load_scripts() {
 	
 	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Spinnaker:400,700|Droid+Serif:400,700', array(), CHILD_THEME_VERSION );
 	
-	$var_maidive_video_url_mp4 = get_field('maidive_video_url_mp4');
+	$var_maidive_video_url_mp4 = get_field('maidive_video_url_mp4' );
 	
 	if( is_mobile() && has_post_thumbnail() ) { 
 		
@@ -263,4 +266,25 @@ function maidive_blog_genesis_meta() {
 		add_action( 'genesis_sidebar', 'genesis_do_sidebar_alt' );
 		
 	}	
+}
+
+// Add featured image for specific size only in archive view, remove in all else
+function maidive_featured_image() {
+
+	if( is_archive() ) {
+		
+		$image_args = array(
+			'size' => 'archive-thumbnail',
+		);
+	
+		$image = genesis_get_image( $image_args );
+	
+		if ( $image ) {
+			echo '<a href="' . get_permalink() . '">' . $image .'</a>';
+		}
+		
+	}else{
+		return;
+	}
+
 }

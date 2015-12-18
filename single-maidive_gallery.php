@@ -27,7 +27,7 @@ function maidive_single_gallery_genesis_meta() {
 // Enqueue scripts
 function rc_load_object_scripts() {
 
-	wp_enqueue_script( 'flex-slider', get_bloginfo( 'stylesheet_directory' ) . '/js/flex-slider.js', array( 'jquery' ), '1.0.0' );
+	wp_enqueue_script( 'flex-slider', get_bloginfo( 'stylesheet_directory' ) . '/js/flex-slider.js' );
 
 }
 
@@ -41,7 +41,7 @@ function maidive_gallery_do_loop() {
 			echo '<ul class="slides">';
 				foreach( $images as $image ): 
 					echo '<li data-thumb="'.$image['sizes']['thumbnail'].'">';
-						echo '<img src="'.$image['url'].'" alt="'.$image['alt'].'" />';
+						echo '<img src="'.$image['sizes']['large'].'" alt="'.$image['alt'].'" />';
 					echo '</li>';
 				endforeach;
 			echo '</ul>';

@@ -15,10 +15,6 @@ function maidive_archive_adventure_genesis_meta() {
 	
 	//* Force full-width-content layout setting
 	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
-	
-	//* Add featured image in archive view Entry Content above Excerpt
-	remove_action( 'genesis_entry_content', 'genesis_do_post_image', 8 );
-	add_action( 'genesis_entry_header', 'maidive_archive_adventure_featured_image', 8 );
 
 }
 
@@ -34,20 +30,6 @@ function maidive_archive_adventure_class( $classes ) {
 	return $classes;
 }
 
-// Add featured image for specific size
-function maidive_archive_adventure_featured_image() {
-
-	$image_args = array(
-		'size' => 'medium',
-	);
-
-	$image = genesis_get_image( $image_args );
-
-	if ( $image ) {
-		echo '<a href="' . get_permalink() . '">' . $image .'</a>';
-	}
-
-}
 
 // Run the Genesis loop
 genesis();
