@@ -8,7 +8,7 @@ jQuery(function( $ ){
 
 	// Fade in the video background after the video is fully loaded
 	BV.getPlayer().on('durationchange',function(){
-		$('#big-video-wrap').fadeIn();
+		$('#big-video-wrap').fadeIn(1000);
 	});
 
 });
