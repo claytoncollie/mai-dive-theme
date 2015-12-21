@@ -221,7 +221,7 @@ function maidive_load_scripts() {
 		$backstretch_src = array( 'src' => $featured_image_url );
 		wp_localize_script( 'maidive-backstretch-init', 'BackStretchImg', $backstretch_src );
 		
-	}elseif( !empty($var_maidive_video_url_mp4) ){
+	}elseif( !empty($var_maidive_video_url_mp4) && !is_post_type_archive() ){
 		
 		wp_enqueue_script( 'bigvideo-init', get_stylesheet_directory_uri() . '/js/bigvideo-init.js', '', '1.0.0', false );
 		
@@ -230,7 +230,7 @@ function maidive_load_scripts() {
 		wp_localize_script( 'bigvideo-init', 'BigVideoLocalizeMp4', $bigvideo_mp4 );
 
 		
-	}else{
+	}elseif( !is_post_type_archive() ){
 		
 		wp_enqueue_script( 'bigvideo-init', get_stylesheet_directory_uri() . '/js/bigvideo-init.js', '', '1.0.0', false );
 		

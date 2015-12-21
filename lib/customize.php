@@ -78,13 +78,13 @@ $wp_customize->add_control(
 // Video Background
 //------------------------------------------------------------------
 $wp_customize->add_section( 'maidive-video', array(
-	'title'    => __( 'Default Background Video', 'maidive' ),
-	'description' => __( '<p>Set the default video if one is not set on the specific page.</p>', 'maidive' ),
+	'title'    => __( 'Background Videos', 'maidive' ),
+	'description' => __( '<p>Grab the URL from Vimeo under the File tab at the bottom of the page.  Use the high def MP4</p>', 'maidive' ),
 	'priority' => 75,
 ) );
 
 	
-	// Mp4 file type
+	// Default Video
 	$wp_customize->add_setting( 'maidive-background-video-mp4', array(
 		'type'     => 'option',
 	) );
@@ -92,9 +92,71 @@ $wp_customize->add_section( 'maidive-video', array(
 		$wp_customize->add_control(
 			'background-video-mp4-textbox',
 			array(
-				'label'       => __( 'Vimeo URL - MP4', 'maidive' ),
+				'label'       => __( 'Default and/or Fallback', 'maidive' ),
 				'section'     => 'maidive-video',
 				'settings'    => 'maidive-background-video-mp4',
+				'type' => 'text',
+			)
+		);
+		
+	// Accomodation Archive
+	$wp_customize->add_setting( 'maidive-accomodation-video-mp4', array(
+		'type'     => 'option',
+	) );
+	 
+		$wp_customize->add_control(
+			'accomodation-video-mp4-textbox',
+			array(
+				'label'       => __( 'Accomodation Archive', 'maidive' ),
+				'section'     => 'maidive-video',
+				'settings'    => 'maidive-accomodation-video-mp4',
+				'type' => 'text',
+			)
+		);
+	
+	// Gallery Archive
+	$wp_customize->add_setting( 'maidive-gallery-video-mp4', array(
+		'type'     => 'option',
+	) );
+	 
+		$wp_customize->add_control(
+			'gallery-video-mp4-textbox',
+			array(
+				'label'       => __( 'Gallery Archive', 'maidive' ),
+				'section'     => 'maidive-video',
+				'settings'    => 'maidive-gallery-video-mp4',
+				'type' => 'text',
+			)
+		);
+	
+	
+	// Adventures Archive
+	$wp_customize->add_setting( 'maidive-adventure-video-mp4', array(
+		'type'     => 'option',
+	) );
+	 
+		$wp_customize->add_control(
+			'adventure-video-mp4-textbox',
+			array(
+				'label'       => __( 'Adventure Archive', 'maidive' ),
+				'section'     => 'maidive-video',
+				'settings'    => 'maidive-adventure-video-mp4',
+				'type' => 'text',
+			)
+		);
+	
+	
+	// Courses Archive
+	$wp_customize->add_setting( 'maidive-course-video-mp4', array(
+		'type'     => 'option',
+	) );
+	 
+		$wp_customize->add_control(
+			'course-video-mp4-textbox',
+			array(
+				'label'       => __( 'Courses Archive', 'maidive' ),
+				'section'     => 'maidive-video',
+				'settings'    => 'maidive-course-video-mp4',
 				'type' => 'text',
 			)
 		);
