@@ -88,6 +88,9 @@ function maidive_theme_setup() {
 	// watch video button
 	add_action('genesis_after','maidive_watch_video');
 	
+	// Mobile toolbar
+	add_action('genesis_after','maidive_mobile_toolbar');
+	
 	// Blog specific actions
 	add_action( 'genesis_meta', 'maidive_blog_genesis_meta' );
 	
@@ -156,6 +159,10 @@ function maidive_theme_setup() {
 		'id'          => 'watch-video',
 		'name'        => __( 'Watch Video', 'maidive' ),
 	) );
+	genesis_register_sidebar( array(
+		'id'          => 'mobile-toolbar',
+		'name'        => __( 'Mobile Toolbar', 'maidive' ),
+	) );
 	
 	//* Custom functions
 	//------------------------------------------------------------------------------------------------------
@@ -174,6 +181,9 @@ function maidive_theme_setup() {
 	
 	//* Simple social share filters
 	require_once( get_stylesheet_directory() . '/lib/simple-social-share.php' );
+	
+	// Schema
+	//------------------------------------------------------------------------------------------------------
 	
 	//* Genesis schema helper functions
 	require_once( get_stylesheet_directory() . '/lib/genesis-schema-helper-functions.php' );
@@ -246,6 +256,14 @@ function maidive_load_scripts() {
 function maidive_watch_video() {
 	genesis_widget_area( 'watch-video', array(
 		'before' => '<div class="watch-video">',
+		'after'  => '</div>',
+	) );
+}
+
+// Watch video button
+function maidive_mobile_toolbar() {
+	genesis_widget_area( 'mobile-toolbar', array(
+		'before' => '<div class="mobile-toolbar">',
 		'after'  => '</div>',
 	) );
 }

@@ -169,13 +169,12 @@ textarea:focus,
 }
 
 ::-moz-selection {
-	background-color: #232264;
-	color: #fff;
+	color: #444444;
 }
 
 ::selection {
-	background-color: #232264;
-	color: #fff;
+
+	color: #444444;
 }
 
 a {
@@ -1151,99 +1150,6 @@ Content Area
 	padding: 40px;
 }
 
-.maidive-home .content .featured-content .widget-title,
-.maidive-home .content .widget_text .widget-title {
-	color: #fff;
-	text-align: center;
-	margin: -40px 0 0;
-	padding-bottom: 20px;
-}
-
-.maidive-home .content .featured-content .widget-title::after,
-.maidive-home .content .featured-content .widget-title::before,
-.maidive-home .content .widget_text .widget-title:after,
-.maidive-home .content .widget_text .widget-title:before {
-	content: " ";
-	display: inline-block;
-	border-top: 2px solid #fff;
-	padding-bottom: 4px;
-	width: 15%;
-}
-
-.maidive-home .content .featured-content .widget-title::before,
-.maidive-home .content .widget_text .widget-title:before {
-	margin-right: 12px;
-}
-
-.maidive-home .content .featured-content .widget-title::after,
-.maidive-home .content .widget_text .widget-title:after {
-	margin-left: 12px;
-}
-
-.maidive-home .content .featured-content article ~ .widget-title {
-	clear: both;
-	color: #333333;
-	margin: 0;
-	padding: 20px 0;
-}
-
-.maidive-home .content .featured-content article ~ .widget-title:before,
-.maidive-home .content .featured-content article ~ .widget-title:after {
-	border-color: #333333;
-}
-
-.maidive-home .content .home-middle .featured-content article ~ .widget-title,
-.maidive-home .content .home-middle .featured-content article ~ .widget-title:before,
-.maidive-home .content .home-middle .featured-content article ~ .widget-title:after {
-	border-color: #fff;
-	color: #fff;
-}
-
-.maidive-home .content .featured-content article ~ ul,
-.maidive-home .content .featured-content .more-from-category {
-	margin-bottom: 40px;
-	padding: 0 10px;
-	text-align: center;
-}
-
-.maidive-home .content .featured-content .entry {
-	border-radius: 0;
-	margin: 0;
-	padding: 0;
-	position: relative;
-}
-
-.maidive-home .content .featured-content .entry-image {
-	display: block;
-	margin-bottom: 0;
-}
-
-.maidive-home .content .featured-content .entry-header {
-	padding: 40px 40px 0;
-}
-
-.maidive-home .content .featured-content .entry-content {
-	padding: 0 40px;
-}
-
-.maidive-home .content .featured-content .entry-content p {
-	margin-bottom: 40px;
-}
-
-.maidive-home .content .featured-content a:hover {
-	color: #28ACE2;
-}
-
-.maidive-home .content .featuredpost .entry {
-	background: none;
-	float: left;
-	width: 33.33334%;
-}
-
-.maidive-home .content .featuredpost img.entry-image {
-	margin: 0;
-}
-
 .maidive-home .site-header {
 	margin-bottom: 0;
 }
@@ -1727,6 +1633,37 @@ Site Specific Styling
 	padding: 0;
 }
 
+/* Mobile Toolbar
+---------------------------------------------------------------------*/
+.mobile-toolbar {
+	display: none;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background: #28ACE2;
+	font-family: 'Spinnaker', sans-serif;
+}
+
+.mobile-toolbar .widget {
+	float: left;
+	width: 50%;
+	text-align: center;
+	padding: 10px 20px;
+	position: relative;
+}
+
+.mobile-toolbar a {
+	color: #ffffff;
+}
+
+.mobile-toolbar .hide-text-button,
+.mobile-toolbar .show-text-button {
+	position: absolute;
+	right: 25%;
+}
+
+
+
 /* Landing page
 -------------------------------------------------------------------*/
 .maidive-landing .header-widget-area {
@@ -2172,9 +2109,7 @@ Media Queries
 		margin: 0;
 		width: 100%;
 	}
-	
-	
-	
+		
 	.entry-title {
 		font-size: 30px;
 	}
@@ -2184,24 +2119,15 @@ Media Queries
 		padding: 5%;
 	}
 	
-	
 	.header-full-width .site-container,
 	.site-container {
 		padding: 0;
-	}
-
-	.site-header {
-		position: static;
 	}
 	
 	.maidive-home .content .wrap {
 		width: 100%;
 	}
-	
-	.maidive-home .content .featured-content .entry-header {
-		clear: both;
-	}
-	
+		
 	.home-top .widget-title {
 		font-size: 48px;
 	}
@@ -2423,6 +2349,14 @@ Media Queries
 	
 	.flex-direction-nav a {
 		top: 65px;
+	}
+	
+	.site-footer {
+		margin-bottom: 80px;
+	}
+	
+	.mobile-toolbar {
+		display: block;
 	}
 
 }

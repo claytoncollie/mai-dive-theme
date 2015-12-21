@@ -47,10 +47,19 @@ jQuery(function( $ ){
 	});
 	
 	// Watch Video Button
-	
 	$(".watch-video .show-text-button").addClass("hide")
 	
 	$(".watch-video").click(function(){
+		$(".site-header").toggleClass("hide");
+		$(".site-container").toggleClass("hide");
+		$(".hide-text-button").toggleClass("hide");
+		$(".show-text-button").toggleClass("show");
+	});
+	
+	// Mobile Toolbar Button
+	$(".mobile-toolbar .show-text-button").addClass("hide")
+	
+	$(".mobile-toolbar").click(function(){
 		$(".site-header").toggleClass("hide");
 		$(".site-container").toggleClass("hide");
 		$(".hide-text-button").toggleClass("hide");
