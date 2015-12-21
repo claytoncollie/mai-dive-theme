@@ -849,26 +849,22 @@ Site Header
 
 .site-title {
 	font-family: 'Spinnaker', sans-serif;
-	font-size: 28px;
-	line-height: 1;
-	margin: 0;
-	text-transform: uppercase;
+	font-size: 18px;
 }
 
 .site-title a {
-	color: #fff;
+	color: #ffffff;
 }
 
 .site-title a:hover {
-	color: #28ACE2;
+	color: #ffffff;
 }
 
 .site-description {
-	color: #999;
-	font-size: 16px;
+	color: #ffffff;
+	font-size: 14px;
 	font-weight: 400;
-	line-height: 1;
-	margin-bottom: 0;
+	margin-bottom: 10px;
 }
 
 /* Full width header, no widgets */
@@ -1721,6 +1717,7 @@ Site Specific Styling
 	background-color: #ffffff;
 	padding: 40px;
 	border-radius: 5px;
+	margin-bottom: 40px;
 }
 
 .page-template-page-reviews .sidebar .widget {
@@ -2334,10 +2331,46 @@ Media Queries
 	.genesis-nav-menu .menu-item.button {
 		border-radius: 0;
 	}
+	
+	.entry,
+	.archive-description,
+	.sidebar .widget {
+		padding: 20px;
+		margin-bottom: 40px;
+	}
+	
+	#CDSWIDSSP {
+		width: 100% !important;
+	}
+	
+	.gform_wrapper .ginput_complex.ginput_container.has_first_name.has_middle_name.no_last_name span, 
+	.gform_wrapper .ginput_complex.ginput_container.has_first_name.no_middle_name.has_last_name span, 
+	.gform_wrapper .ginput_complex.ginput_container.no_first_name.has_middle_name.has_last_name span,
+	.gform_wrapper .top_label li.gfield.gf_left_half,
+	.gform_wrapper .top_label li.gfield.gf_right_half,
+	.gform_wrapper .gform_footer input.button, 
+	.gform_wrapper .gform_footer input[type=image], 
+	.gform_wrapper .gform_footer input[type=submit] {
+		width: 100% !important;
+	}
 
 }
 
 @media only screen and (max-width: 480px) {
+	.site-header .wrap {
+		padding: 3%;
+	}
+	
+	.header-image .site-description, 
+	.header-image .site-title a {
+		text-indent: 0;
+		background: none !important;
+	}
+	
+	.header-image .site-title a {
+		height: 30px;
+	}
+	
 	.home-top .hero .widget-title {
 		font-size: 36px;
 	}
@@ -2354,6 +2387,14 @@ Media Queries
 	
 	.watch-video {
 		display: none;
+	}
+	
+	.archive-title {
+		font-size: 28px;
+	}
+	
+	.flex-direction-nav a {
+		top: 65px;
 	}
 
 }
