@@ -30,7 +30,6 @@ function maidive_home_genesis_meta() {
 		add_action( 'genesis_loop', 'maidive_homepage_widgets' );
 
 	}
-
 }
 
 function maidive_body_class( $classes ) {
@@ -60,15 +59,6 @@ function maidive_homepage_top() {
 	echo '</div>';
 	
 }
-
-/*function maidive_homepage_top() {
-
-	genesis_widget_area( 'home-top', array(
-		'before' => '<div id="home-top" class="home-top widget-area"><div class="wrap">',
-		'after'  => '</div></div>',
-	) );
-	
-}*/
 
 function maidive_homepage_widgets() {
 	

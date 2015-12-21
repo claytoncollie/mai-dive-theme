@@ -865,6 +865,7 @@ Site Header
 	font-size: 14px;
 	font-weight: 400;
 	margin-bottom: 10px;
+	font-family: 'Spinnaker', sans-serif;
 }
 
 /* Full width header, no widgets */
@@ -1697,20 +1698,20 @@ Site Specific Styling
 }
 
 .watch-video a {
-	border: 1px solid #ffffff;
+	background-color: #28ACE2;
 	color: #ffffff;
-    border-radius: 5px;
 	padding: 10px 20px;
 	font-family: 'Spinnaker', san-serif;
 	text-transform: uppercase;
 	position: fixed;
-	bottom: 40px;
-	right: 40px;
+	bottom: 0;
+	right: 0;
+	z-index: 9999;
 }
 
 .watch-video a:hover {
 	background-color: #ffffff;
-	color: #333;
+	color: #28ACE2;
 }
 
 .page-template-page-reviews .sidebar {
@@ -1937,7 +1938,6 @@ html[xmlns] .flexslider .slides {
   width: 100px;
   height: 100px;
   display: block;
-  opacity: .7;
   cursor: pointer;
   -moz-user-select: none;
   -webkit-transition: all 1s ease;
@@ -2002,7 +2002,8 @@ Media Queries
 
 	.site-inner,
 	.wrap {
-		max-width: 960px;
+		width: 90%;
+		
 	}
 
 	.content-sidebar-sidebar .content-sidebar-wrap,
@@ -2016,7 +2017,7 @@ Media Queries
 	}
 	
 	.site-header .widget-area {
-		width: 660px;
+		width: 100%;
 	}
 
 	.sidebar-content-sidebar .content,
@@ -2038,14 +2039,53 @@ Media Queries
 		margin-right: 5%;
 		margin-bottom: 5%;
 	}
+	
+	.genesis-nav-menu a, 
+	.maidive-landing #menu-landing-page a {
+		padding: 20px 7px 15px 7px;
+	}
 
 }
 
-@media only screen and (max-width: 1023px) {
+@media only screen and (max-width: 1060px) {
 
 	.site-inner,
 	.wrap {
-		max-width: 760px;
+		width: 90%;
+	}
+	
+	.site-header .wrap {
+		padding: 3%;
+	}
+	
+	.site-header {
+		margin-bottom: 0;
+	}
+	
+	.header-image .site-description, 
+	.header-image .site-title a {
+		text-indent: 0;
+		background: none !important;
+	}
+	
+	.header-image .site-title a {
+		height: 30px;
+	}
+	
+	.header-image .title-area {
+		padding: 0;
+    	margin-left: 0;
+    	box-shadow: 0 0 0;
+    	position: relative;
+		border-radius: 0;
+	}
+	
+	.site-header .header-widget-area .widget_text {
+		padding: 0px;
+		text-align: center;
+		line-height: 2.6;
+		background-color: #28ACE2;
+		border-radius: 0 0 5px 5px;
 	}
 
 	.content,
@@ -2110,12 +2150,14 @@ Media Queries
 		padding: 12px;
 	}
 	
-	
-	
 }
 
 @media only screen and (max-width: 800px) {
 
+	.site-inner, .wrap {
+		width: 100%;
+	}
+	
 	.five-sixths,
 	.four-sixths,
 	.one-fourth,
@@ -2150,10 +2192,6 @@ Media Queries
 
 	.site-header {
 		position: static;
-	}
-
-	.wrap {
-		width: 90%;
 	}
 	
 	.maidive-home .content .wrap {
@@ -2204,9 +2242,9 @@ Media Queries
 	}
 	
 	.genesis-nav-menu.responsive-menu > .menu-item-has-children:before {
-		content: "\f347";
+		content: "\f078";
 		float: right;
-		font: normal 20px/1 'dashicons';
+		font-family: FontAwesome;
 		height: 20px;
 		padding: 15px 20px;
 		right: 0;
@@ -2215,7 +2253,7 @@ Media Queries
 	}
 	
 	.genesis-nav-menu.responsive-menu .menu-open.menu-item-has-children:before {
-		content: "\f343";
+		content: "\f00d";
 	}
 	
 	.genesis-nav-menu.responsive-menu .sub-menu {
@@ -2273,8 +2311,6 @@ Media Queries
 	.site-header .wrap {
 		width: 100%;
 	}
-	
-	
 	
 	.header-image .title-area {
 		width: 100%;
@@ -2353,23 +2389,15 @@ Media Queries
 	.gform_wrapper .gform_footer input[type=submit] {
 		width: 100% !important;
 	}
+	
+	.site-footer .wrap {
+		padding: 5%;
+	}
 
 }
 
 @media only screen and (max-width: 480px) {
-	.site-header .wrap {
-		padding: 3%;
-	}
 	
-	.header-image .site-description, 
-	.header-image .site-title a {
-		text-indent: 0;
-		background: none !important;
-	}
-	
-	.header-image .site-title a {
-		height: 30px;
-	}
 	
 	.home-top .hero .widget-title {
 		font-size: 36px;

@@ -172,11 +172,18 @@ function maidive_theme_setup() {
 	//* Unregister Genesis specific functions, page layouts, and page templates
 	require_once( trailingslashit( get_stylesheet_directory() ) . '/lib/genesis-unregister-functions.php' );
 	
-	//* Inline logo
-	//require_once( trailingslashit( get_stylesheet_directory() ) . '/lib/maidive-inline-logo.php' );
-	
 	//* Simple social share filters
 	require_once( get_stylesheet_directory() . '/lib/simple-social-share.php' );
+	
+	//* Genesis schema helper functions
+	require_once( get_stylesheet_directory() . '/lib/genesis-schema-helper-functions.php' );
+	
+	// Call schema filters
+	add_filter( 'genesis_attr_entry', 'maidive_schema_hotel', 20 );
+	add_filter( 'genesis_attr_entry-title', 'maidive_itemprop_name', 20 );
+	add_filter( 'genesis_attr_entry-content', 'maidive_itemprop_description', 20 );
+	add_filter( 'genesis_post_title_output', 'maidive_title_link_schema', 20 );
+	add_filter( 'genesis_attr_content', 'maidive_schema_empty', 20 );
 
 }
 
