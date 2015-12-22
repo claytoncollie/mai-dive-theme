@@ -150,6 +150,7 @@ body {
 	line-height: 1.625;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	background-color: #f9f9f9;
 }
 
 a,
@@ -169,11 +170,13 @@ textarea:focus,
 }
 
 ::-moz-selection {
+	background-color: #f9f9f9;
 	color: #444444;
+	
 }
 
 ::selection {
-
+	background-color: #f9f9f9;
 	color: #444444;
 }
 
@@ -1126,6 +1129,7 @@ Site Navigation
 	text-transform: uppercase;
 	font-family: 'Spinnaker', sans-serif;
 	font-size: 14px;
+	line-height: 3;
 }
 
 
@@ -1642,13 +1646,14 @@ Site Specific Styling
 	width: 100%;
 	background: #28ACE2;
 	font-family: 'Spinnaker', sans-serif;
+	font-size: 14px;
 }
 
 .mobile-toolbar .widget {
 	float: left;
 	width: 50%;
 	text-align: center;
-	padding: 10px 20px;
+	padding: 5px 20px 0 20px;
 	position: relative;
 }
 
@@ -2003,6 +2008,7 @@ Media Queries
 	.header-image .site-title a {
 		text-indent: 0;
 		background: none !important;
+		margin: 10px 0 6px;
 	}
 	
 	.header-image .site-title a {
@@ -2040,12 +2046,6 @@ Media Queries
 	.site-header .widget-area,
 	.title-area {
 		width: 100%;
-	}
-
-
-	.header-image .site-title a {
-		background-position: center !important;
-		margin: 0 0 6px;
 	}
 
 	.genesis-nav-menu li,

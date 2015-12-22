@@ -16,11 +16,12 @@ function maidive_archive_course_genesis_meta() {
 	//* Force full-width-content layout setting
 	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 	
-	//If no videos or post thumbnails are present, use default video set in customizer
-	wp_enqueue_script( 'bigvideo-init', get_stylesheet_directory_uri() . '/js/bigvideo-init.js', '', '1.0.0', true );
-	$bigvideo_mp4 = get_option( 'maidive-course-video-mp4' );
-	wp_localize_script( 'bigvideo-init', 'BigVideoLocalizeMp4', $bigvideo_mp4 );
-
+	if( !is_mobile() ) {
+		//If no videos or post thumbnails are present, use default video set in customizer
+		wp_enqueue_script( 'bigvideo-init', get_stylesheet_directory_uri() . '/js/bigvideo-init.js', '', '1.0.0', true );
+		$bigvideo_mp4 = get_option( 'maidive-course-video-mp4' );
+		wp_localize_script( 'bigvideo-init', 'BigVideoLocalizeMp4', $bigvideo_mp4 );
+	}
 }
 
 // 3.

@@ -180,13 +180,13 @@ function maidive_theme_setup() {
 	require_once( trailingslashit( get_stylesheet_directory() ) . '/lib/genesis-unregister-functions.php' );
 	
 	//* Simple social share filters
-	require_once( get_stylesheet_directory() . '/lib/simple-social-share.php' );
+	require_once( trailingslashit( get_stylesheet_directory() ) . '/lib/simple-social-share.php' );
 	
 	// Schema
 	//------------------------------------------------------------------------------------------------------
 	
 	//* Genesis schema helper functions
-	require_once( get_stylesheet_directory() . '/lib/genesis-schema-helper-functions.php' );
+	require_once( trailingslashit( get_stylesheet_directory() ) . '/lib/genesis-schema-helper-functions.php' );
 	
 	// Call schema filters
 	add_filter( 'genesis_attr_entry', 'maidive_schema_hotel', 20 );

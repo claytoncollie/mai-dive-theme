@@ -1,24 +1,30 @@
 jQuery(function( $ ){
 	
 	// Dynamic front page slideshow and window height
-	if(window.innerWidth > 800) {
-		var adminHeight = $('#wpadminbar').outerHeight();
-		var siteHeaderHeight = $('.site-header').outerHeight();
-		var siteInnerHeight = $('.site-inner').outerHeight();
-		var windowHeight = $(window).height();
-		var newHeight = windowHeight - siteHeaderHeight - siteInnerHeight - adminHeight;
+	var adminHeight = $('#wpadminbar').outerHeight();
+	var siteHeaderHeight = $('.site-header').outerHeight();
+	var siteInnerHeight = $('.site-inner').outerHeight();
+	var windowHeight = $(window).height();
 		
+	if(window.innerWidth > 800 && window.innerHeight > 800) {
+		var newHeight = windowHeight - siteHeaderHeight - siteInnerHeight - adminHeight;
+		$('.home-top') .css({'height': newHeight +'px'});
+	}else{
+		var newHeight = windowHeight - adminHeight;
 		$('.home-top') .css({'height': newHeight +'px'});
 	}
 		
 	$(window).resize(function(){
-		if(window.innerWidth > 800) {
-			var adminHeight = $('#wpadminbar').outerHeight();
-			var siteHeaderHeight = $('.site-header').outerHeight();
-			var siteInnerHeight = $('.site-inner').outerHeight();
-			var windowHeight = $(window).height();
-			var newHeight = windowHeight - siteHeaderHeight - siteInnerHeight - adminHeight;
+		var adminHeight = $('#wpadminbar').outerHeight();
+		var siteHeaderHeight = $('.site-header').outerHeight();
+		var siteInnerHeight = $('.site-inner').outerHeight();
+		var windowHeight = $(window).height();
 			
+		if(window.innerWidth > 800 && window.innerHeight > 800) {
+			var newHeight = windowHeight - siteHeaderHeight - siteInnerHeight - adminHeight;
+			$('.home-top') .css({'height': newHeight +'px'});
+		}else{
+			var newHeight = windowHeight - adminHeight;
 			$('.home-top') .css({'height': newHeight +'px'});
 		}
 	});
