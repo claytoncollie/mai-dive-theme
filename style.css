@@ -1158,14 +1158,20 @@ Content Area
 	margin-bottom: 0;
 }
 
+.home-top {
+	position: relative;
+    display: table;
+    table-layout: fixed;
+    text-align: center;
+    margin: auto;
+}
+
 .home-top .wrap {
 	color: #fff;
 	font-family: 'Spinnaker', sans-serif;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    display: table-cell;
+    vertical-align: middle;
 	text-align: left;
-	width: 100%;
 }
 
 .home-top .hero .widget-title {
@@ -1973,7 +1979,7 @@ Media Queries
 	}
 	
 	.home-top .hero .widget-title {
-		font-size: 60px;
+		font-size: 55px;
 	}
 	
 	.maidive-home .content .widget {
@@ -1985,6 +1991,14 @@ Media Queries
 	.genesis-nav-menu a, 
 	.maidive-landing #menu-landing-page a {
 		padding: 20px 7px 15px 7px;
+	}
+	
+	.home-top {
+		width: 90%;
+	}
+	
+	.home-top .wrap {
+		padding: 80px 0;
 	}
 
 }
@@ -2087,6 +2101,14 @@ Media Queries
 		padding: 12px;
 	}
 	
+	.home-top .hero .widget-title {
+		font-size: 42px;
+	}
+	
+	.home-top .hero .textwidget p {
+		font-size: 22px;
+	}
+	
 }
 
 @media only screen and (max-width: 800px) {
@@ -2129,7 +2151,7 @@ Media Queries
 	}
 		
 	.home-top .widget-title {
-		font-size: 48px;
+		font-size: 38px;
 	}
 	
 	.nav-secondary .genesis-nav-menu a {
