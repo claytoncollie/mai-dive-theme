@@ -1653,6 +1653,7 @@ Site Specific Styling
 	background: #28ACE2;
 	font-family: 'Spinnaker', sans-serif;
 	font-size: 14px;
+	z-index: 9999999;
 }
 
 .mobile-toolbar .widget {
