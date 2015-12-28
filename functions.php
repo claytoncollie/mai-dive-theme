@@ -97,6 +97,8 @@ function maidive_theme_setup() {
 	//* Add featured image in archive view Entry Content above Excerpt
 	remove_action( 'genesis_entry_content', 'genesis_do_post_image', 8 );
 	add_action( 'genesis_entry_header', 'maidive_featured_image', 8 );
+	
+	//https://www.resbook.co.nz/art/guests/?pid=1918&amp;pmpid=&amp;availability=show&amp;iframe=1&amp;center=true
 
 	//* Register widget areas
 	//--------------------------------------------------------------------------------------------

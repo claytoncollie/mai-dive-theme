@@ -70,3 +70,7 @@ add_theme_support( 'genesis-menus', array( 'secondary' => __( 'Secondary Navigat
 
 //* Unregister secondary navigation menu
 add_theme_support( 'genesis-menus', array( 'primary' => __( 'Primary Navigation Menu', 'genesis' ) ) );
+
+/** Remove favicon */
+remove_action('genesis_meta', 'genesis_load_favicon');
+remove_action( 'wp_head', 'genesis_load_favicon' );
