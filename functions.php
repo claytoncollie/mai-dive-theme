@@ -210,7 +210,7 @@ function maidive_load_scripts() {
 	
 	$var_maidive_video_url_mp4 = get_field('maidive_video_url_mp4' );
 	
-	if( is_mobile() && has_post_thumbnail() && !is_post_type_archive() ) { 
+	if( wp_is_mobile() && has_post_thumbnail() && !is_post_type_archive() ) { 
 		
 		// if it is not mobile, has a thumbnail, and do not have any contents in the custom fields for videos, show the psot thumbnail
 		wp_enqueue_script( 'maidive-backstretch-init', get_bloginfo( 'stylesheet_directory' ).'/js/backstretch-init.js', '', '1.0.0', false );	
@@ -218,11 +218,11 @@ function maidive_load_scripts() {
 		$backstretch_src = array( 'src' => $featured_image_url );
 		wp_localize_script( 'maidive-backstretch-init', 'BackStretchImg', $backstretch_src );
 	
-	}elseif( is_mobile() && !has_post_thumbnail() && !is_post_type_archive() ) {	
+	}elseif( wp_is_mobile() && !has_post_thumbnail() && !is_post_type_archive() ) {	
 		
 		// If it fails the first conditional by not having a post thumbnail, display default image from customizer
 		wp_enqueue_script( 'maidive-backstretch-init', get_bloginfo( 'stylesheet_directory' ).'/js/backstretch-init.js', '', '1.0.0', false );
-		$backstretch_src = array( 'src' => get_option( 'maidive-backstretch-image') );
+		$backstretch_src = array( 'src' => get_option( 'maidive-default-image') );
 		wp_localize_script( 'maidive-backstretch-init', 'BackStretchImg', $backstretch_src );
 	
 	}elseif( has_post_thumbnail() && empty($var_maidive_video_url_mp4) && !is_post_type_archive() ) { 

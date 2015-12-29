@@ -65,7 +65,7 @@ $wp_customize->add_section( 'maidive-image', array(
 	$wp_customize->add_control(
 		new Child_Maidive_Image_Control(
 			$wp_customize,
-			'maidive-default-image',
+			'maidive-default-image-uploader',
 			array(
 				'label'       => __( 'Default Image', 'maidive' ),
 				'section'     => 'maidive-image',
@@ -82,7 +82,7 @@ $wp_customize->add_section( 'maidive-image', array(
 	$wp_customize->add_control(
 		new Child_Maidive_Image_Control(
 			$wp_customize,
-			'maidive-accommodations-image',
+			'maidive-accommodations-image-uploader',
 			array(
 				'label'       => __( 'Accommodations Image', 'maidive' ),
 				'section'     => 'maidive-image',
@@ -100,7 +100,7 @@ $wp_customize->add_section( 'maidive-image', array(
 	$wp_customize->add_control(
 		new Child_Maidive_Image_Control(
 			$wp_customize,
-			'maidive-adventures-image',
+			'maidive-adventures-image-uploader',
 			array(
 				'label'       => __( 'Adventures Image', 'maidive' ),
 				'section'     => 'maidive-image',
@@ -118,7 +118,7 @@ $wp_customize->add_section( 'maidive-image', array(
 	$wp_customize->add_control(
 		new Child_Maidive_Image_Control(
 			$wp_customize,
-			'maidive-gallery-image',
+			'maidive-gallery-image-uploader',
 			array(
 				'label'       => __( 'Gallery Image', 'maidive' ),
 				'section'     => 'maidive-image',
@@ -136,7 +136,7 @@ $wp_customize->add_section( 'maidive-image', array(
 	$wp_customize->add_control(
 		new Child_Maidive_Image_Control(
 			$wp_customize,
-			'maidive-courses-image',
+			'maidive-courses-image-uploader',
 			array(
 				'label'       => __( 'Courses Image', 'maidive' ),
 				'section'     => 'maidive-image',
