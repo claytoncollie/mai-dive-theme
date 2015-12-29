@@ -52,27 +52,99 @@ global $wp_customize;
 // Backstretch Image
 //------------------------------------------------------------------
 $wp_customize->add_section( 'maidive-image', array(
-	'title'    => __( 'Default Background Image', 'maidive' ),
+	'title'    => __( 'Background Images', 'maidive' ),
 	'description' => __( '<p>Use the included default image or personalize your site by uploading your own image for the background.</p><p>The default image is <strong>1600 x 1000 pixels</strong>.</p>', 'maidive' ),
 	'priority' => 75,
 ) );
 
-$wp_customize->add_setting( 'maidive-backstretch-image', array(
-	'default'  => sprintf( '%s/images/bg.jpg', get_stylesheet_directory_uri() ),
-	'type'     => 'option',
-) );
- 
-$wp_customize->add_control(
-	new Child_Maidive_Image_Control(
-		$wp_customize,
-		'backstretch-image',
-		array(
-			'label'       => __( 'Backstretch Image Upload', 'maidive' ),
-			'section'     => 'maidive-image',
-			'settings'    => 'maidive-backstretch-image'
+	// Default
+	$wp_customize->add_setting( 'maidive-default-image', array(
+		'type'     => 'option',
+	) );
+	 
+	$wp_customize->add_control(
+		new Child_Maidive_Image_Control(
+			$wp_customize,
+			'maidive-default-image',
+			array(
+				'label'       => __( 'Default Image', 'maidive' ),
+				'section'     => 'maidive-image',
+				'settings'    => 'maidive-default-image'
+			)
 		)
-	)
-);
+	);
+	
+		// Accommodations
+	$wp_customize->add_setting( 'maidive-accommodations-image', array(
+		'type'     => 'option',
+	) );
+	 
+	$wp_customize->add_control(
+		new Child_Maidive_Image_Control(
+			$wp_customize,
+			'maidive-accommodations-image',
+			array(
+				'label'       => __( 'Accommodations Image', 'maidive' ),
+				'section'     => 'maidive-image',
+				'settings'    => 'maidive-accommodations-image'
+			)
+		)
+	);
+
+
+	// Adventures
+	$wp_customize->add_setting( 'maidive-adventures-image', array(
+		'type'     => 'option',
+	) );
+	 
+	$wp_customize->add_control(
+		new Child_Maidive_Image_Control(
+			$wp_customize,
+			'maidive-adventures-image',
+			array(
+				'label'       => __( 'Adventures Image', 'maidive' ),
+				'section'     => 'maidive-image',
+				'settings'    => 'maidive-adventures-image'
+			)
+		)
+	);
+
+
+	// Gallery
+	$wp_customize->add_setting( 'maidive-gallery-image', array(
+		'type'     => 'option',
+	) );
+	 
+	$wp_customize->add_control(
+		new Child_Maidive_Image_Control(
+			$wp_customize,
+			'maidive-gallery-image',
+			array(
+				'label'       => __( 'Gallery Image', 'maidive' ),
+				'section'     => 'maidive-image',
+				'settings'    => 'maidive-gallery-image'
+			)
+		)
+	);
+
+
+	// Courses
+	$wp_customize->add_setting( 'maidive-courses-image', array(
+		'type'     => 'option',
+	) );
+	 
+	$wp_customize->add_control(
+		new Child_Maidive_Image_Control(
+			$wp_customize,
+			'maidive-courses-image',
+			array(
+				'label'       => __( 'Courses Image', 'maidive' ),
+				'section'     => 'maidive-image',
+				'settings'    => 'maidive-courses-image'
+			)
+		)
+	);
+
 
 
 // Video Background
