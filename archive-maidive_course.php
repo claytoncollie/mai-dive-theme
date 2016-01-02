@@ -16,7 +16,7 @@ function maidive_archive_course_genesis_meta() {
 	//* Force full-width-content layout setting
 	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 	
-	if( wp_is_mobile() ) {
+	if( wp_is_mobile() && get_option( 'maidive-courses-image') ) {
 		// Display image from customizer
 		wp_enqueue_script( 'maidive-backstretch-init', get_bloginfo( 'stylesheet_directory' ).'/js/backstretch-init.js', '', '1.0.0', true );
 		$backstretch_src = array( 'src' => get_option( 'maidive-courses-image') );
