@@ -44,15 +44,19 @@ function maidive_homepage_top() {
 	
 		echo '<div class="wrap">';
 	
-			genesis_widget_area( 'home-top-left', array(
-				'before' => '<div class="first three-fourths widget-area hero">',
-				'after'  => '</div>',
-			) );
+			if( is_active_sidebar( 'home-top-left' )  ) {
+				genesis_widget_area( 'home-top-left', array(
+					'before' => '<div class="first three-fourths widget-area hero">',
+					'after'  => '</div>',
+				) );
+			}
 		
-			genesis_widget_area( 'home-top-right', array(
-				'before' => '<div class="one-fourth widget-area trip-advisor">',
-				'after'  => '</div>',
-			) );
+			if( is_active_sidebar( 'home-top-right' )  ) {
+				genesis_widget_area( 'home-top-right', array(
+					'before' => '<div class="one-fourth widget-area trip-advisor">',
+					'after'  => '</div>',
+				) );
+			}
 	
 		echo '</div>';
 		
@@ -61,11 +65,12 @@ function maidive_homepage_top() {
 }
 
 function maidive_homepage_widgets() {
-	
-	genesis_widget_area( 'home-middle', array(
-		'before' => '<div id="home-middle" class="home-middle widget-area"><div class="wrap">',
-		'after'  => '</div></div>',
-	) );
+	if( is_active_sidebar( 'home-middle' )  ) {
+		genesis_widget_area( 'home-middle', array(
+			'before' => '<div id="home-middle" class="home-middle widget-area"><div class="wrap">',
+			'after'  => '</div></div>',
+		) );
+	}	
 
 }
 
