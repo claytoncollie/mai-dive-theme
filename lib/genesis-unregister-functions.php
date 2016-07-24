@@ -60,7 +60,7 @@ remove_action( 'admin_menu', 'genesis_add_inpost_seo_box' );
 remove_theme_support( 'genesis-archive-layouts' );
 
 //* Remove Genesis Layout Settings
-//remove_theme_support( 'genesis-inpost-layouts' );
+remove_theme_support( 'genesis-inpost-layouts' );
 
 //* Remove the edit link
 add_filter ( 'genesis_edit_post_link' , '__return_false' );
@@ -74,3 +74,9 @@ add_theme_support( 'genesis-menus', array( 'primary' => __( 'Primary Navigation 
 /** Remove favicon */
 remove_action('genesis_meta', 'genesis_load_favicon');
 remove_action( 'wp_head', 'genesis_load_favicon' );
+
+//* Unregister primary sidebar
+//unregister_sidebar( 'sidebar' );
+
+//* Unregister secondary sidebar
+unregister_sidebar( 'sidebar-alt' );

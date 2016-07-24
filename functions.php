@@ -3,19 +3,10 @@
  * Functions
  *
  * @package      Mai Dive Child Theme
- * @since        1.0.0
+ * @since        2.0.0
  * @author       Clayton Collie <clayton.collie@gmail.com>
  * @copyright    Copyright (c) 2015, Mai Dive Astrolabe Reef Resort
  * @license      http://opensource.org/licenses/gpl-2.0.php GNU Public License
- *
- */
-/**
- * Theme Setup
- * @since 1.0.0
- *
- * This setup function attaches all of the site-wide functions 
- * to the correct hooks and filters. All the functions themselves
- * are defined below this setup function.
  *
  */
 add_action( 'genesis_setup', 'maidive_theme_setup', 15 );
@@ -27,15 +18,19 @@ function maidive_theme_setup() {
 	load_child_theme_textdomain( 'maidive', apply_filters( 'child_theme_textdomain', get_stylesheet_directory() . '/languages', 'maidive' ) );
 	
 	// Load customizer
-	add_action('customize_register','maidive_customizer');
-	function maidive_customizer() {
-		require_once( get_stylesheet_directory() . '/lib/customize.php' );
-	}
+	include_once( get_stylesheet_directory() . '/lib/customize.php' );
 	
 	//* Child theme (do not remove)
 	define( 'CHILD_THEME_NAME', __( 'Mai Dive Child Theme', 'maidive' ) );
-	define( 'CHILD_THEME_URL', 'https://bitbucket.org/claytoncollie/mai-dive-astrolabe-reef-resort' );
-	define( 'CHILD_THEME_VERSION', '1.0.0' );
+	define( 'CHILD_THEME_URL', 'https://www.maidive.com' );
+	define( 'CHILD_THEME_VERSION', '2.0.0' );
+
+	//* Add front-page body class
+	add_filter( 'body_class', 'maidive_hide_body_class' );
+	function maidive_hide_body_class( $classes ) {
+		$classes[] = 'hidden-until-ready';
+		return $classes;
+	}
 	
 	//* Add HTML5 markup structure
 	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
@@ -45,12 +40,11 @@ function maidive_theme_setup() {
 	
 	//* Enqueue Scripts
 	add_action( 'wp_enqueue_scripts', 'maidive_load_scripts' );
+	add_action( 'wp_enqueue_scripts', 'maidive_load_video_scripts' ); 
 	
 	//* Add new image sizes
-	add_image_size( 'archive-thumbnail', 475, 130, TRUE );
-	
-	// Add layout support for custom post type
-	add_post_type_support( 'maidive_gallery', array('genesis-layouts') );
+	add_image_size( 'maidive_rectangle', 	2100, 717, TRUE );
+	add_image_size( 'maidive_square', 		1200, 631, TRUE );
 	
 	//* Add support for custom header
 	add_theme_support( 'custom-header', array(
@@ -94,69 +88,10 @@ function maidive_theme_setup() {
 	// Blog specific actions
 	add_action( 'genesis_meta', 'maidive_blog_genesis_meta' );
 	
-	//* Add featured image in archive view Entry Content above Excerpt
-	remove_action( 'genesis_entry_content', 'genesis_do_post_image', 8 );
-	add_action( 'genesis_entry_header', 'maidive_featured_image', 8 );
-	
 	//https://www.resbook.co.nz/art/guests/?pid=1918&amp;pmpid=&amp;availability=show&amp;iframe=1&amp;center=true
 
 	//* Register widget areas
 	//--------------------------------------------------------------------------------------------
-	//genesis_register_sidebar( array(
-		//'id'          => 'home-top',
-		//'name'        => __( 'Home Top', 'maidive' ),
-		//'description' => __( 'This is the top section of the homepage.', 'maidive' ),
-	//) );
-	genesis_register_sidebar( array(
-		'id'          => 'home-top-left',
-		'name'        => __( 'Home Top Left', 'maidive' ),
-		'description' => __( 'This is the top left section of the homepage. 2/3rds wide', 'maidive' ),
-	) );
-	genesis_register_sidebar( array(
-		'id'          => 'home-top-right',
-		'name'        => __( 'Home Top Right', 'maidive' ),
-		'description' => __( 'This is the top right section of the homepage. 1/3rd wide', 'maidive' ),
-	) );
-	genesis_register_sidebar( array(
-		'id'          => 'home-middle',
-		'name'        => __( 'Home Middle', 'maidive' ),
-		'description' => __( 'This is the middle section of the homepage.', 'maidive' ),
-	) );
-	genesis_register_sidebar( array(
-		'id'          => 'sidebar-awards',
-		'name'        => __( 'Sidebar - Awards', 'maidive' ),
-		'description' => __( 'Sidebar to put on reviews template.', 'maidive' ),
-	) );
-	genesis_register_sidebar( array(
-		'id'          => 'sidebar-adventures',
-		'name'        => __( 'Sidebar - Adventures', 'maidive' ),
-		'description' => __( 'Sidebar for single page templates associated with Adventures custom post type.', 'maidive' ),
-	) );
-	genesis_register_sidebar( array(
-		'id'          => 'sidebar-accomodations',
-		'name'        => __( 'Sidebar - Accomodations', 'maidive' ),
-		'description' => __( 'Sidebar for single page templates associated with Accomodations custom post type.', 'maidive' ),
-	) );
-	genesis_register_sidebar( array(
-		'id'          => 'sidebar-gallery',
-		'name'        => __( 'Sidebar - Gallery', 'maidive' ),
-		'description' => __( 'Sidebar for single page templates associated with Gallery custom post type.', 'maidive' ),
-	) );
-	genesis_register_sidebar( array(
-		'id'          => 'sidebar-courses',
-		'name'        => __( 'Sidebar - Courses', 'maidive' ),
-		'description' => __( 'Sidebar for single page templates associated with Courses custom post type.', 'maidive' ),
-	) );
-	genesis_register_sidebar( array(
-		'id'          => 'sidebar-landing',
-		'name'        => __( 'Sidebar - Landing Page', 'maidive' ),
-		'description' => __( 'Sidebar for landing page template.', 'maidive' ),
-	) );
-	genesis_register_sidebar( array(
-		'id'          => 'header-right-landing',
-		'name'        => __( 'Header Right - Landing Page', 'maidive' ),
-		'description' => __( 'Header right area for custom menu for landing page template.', 'maidive' ),
-	) );
 	genesis_register_sidebar( array(
 		'id'          => 'watch-video',
 		'name'        => __( 'Watch Video', 'maidive' ),
@@ -183,30 +118,19 @@ function maidive_theme_setup() {
 	
 	//* Simple social share filters
 	require_once( trailingslashit( get_stylesheet_directory() ) . '/lib/simple-social-share.php' );
-	
-	// Schema
-	//------------------------------------------------------------------------------------------------------
-	
-	//* Genesis schema helper functions
-	require_once( trailingslashit( get_stylesheet_directory() ) . '/lib/genesis-schema-helper-functions.php' );
-	
-	// Call schema filters
-	add_filter( 'genesis_attr_entry', 'maidive_schema_hotel', 20 );
-	add_filter( 'genesis_attr_entry-title', 'maidive_itemprop_name', 20 );
-	add_filter( 'genesis_attr_entry-content', 'maidive_itemprop_description', 20 );
-	add_filter( 'genesis_post_title_output', 'maidive_title_link_schema', 20 );
-	add_filter( 'genesis_attr_content', 'maidive_schema_empty', 20 );
 
 }
 
 // Load scripts for all pages
 function maidive_load_scripts() {
-	
-	wp_enqueue_script( 'maidive-global-js', get_bloginfo( 'stylesheet_directory' ) . '/js/global.min.js', array( 'jquery' ), '1.0.0', false );
-	
+	wp_enqueue_script( 'modernizr', 		get_stylesheet_directory_uri() . '/js/modernizr.min.js', array( 'jquery' ), '2.7.1', false );
+	wp_enqueue_script( 'maidive-global-js', get_stylesheet_directory_uri() . '/js/global.js', array( 'jquery', 'modernizr' ), CHILD_THEME_VERSION, true );
 	wp_enqueue_style( 'font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' );
-	
-	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Spinnaker:400,700|Droid+Serif:400,700', array(), CHILD_THEME_VERSION );
+	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Lato:300,700|Roboto:400,700', array(), CHILD_THEME_VERSION );
+}
+
+//Load video scripts
+function maidive_load_video_scripts() {
 	
 	$var_maidive_video_url_mp4 = get_field('maidive_video_url_mp4' );
 	
@@ -234,8 +158,8 @@ function maidive_load_scripts() {
 		wp_localize_script( 'maidive-backstretch-init', 'BackStretchImg', $backstretch_src );
 		
 	}elseif( !empty($var_maidive_video_url_mp4) && !is_post_type_archive() ){
-		wp_enqueue_script( 'video-min', get_stylesheet_directory_uri() . '/js/video.min.js',  array( 'jquery' , 'maidive-global-js' ), '', true );
-		wp_enqueue_script( 'bigvideo-init', get_stylesheet_directory_uri() . '/js/bigvideo-init.js', array( 'video-min' ), '1.0.0', true );
+		//wp_enqueue_script( 'video-min', get_stylesheet_directory_uri() . '/js/video.min.js',  array( 'jquery' , 'maidive-global-js' ), '', true );
+		wp_enqueue_script( 'bigvideo-init', get_stylesheet_directory_uri() . '/js/bigvideo-init.js', array( 'maidive-global-js' ), '1.0.0', true );
 		
 		// Show video if custom fields are set on individual pages
 		$bigvideo_mp4 = $var_maidive_video_url_mp4;
@@ -243,8 +167,8 @@ function maidive_load_scripts() {
 
 		
 	}elseif( !is_post_type_archive() ){
-		wp_enqueue_script( 'video-min', get_stylesheet_directory_uri() . '/js/video.min.js',  array( 'jquery' , 'maidive-global-js' ), '', true );
-		wp_enqueue_script( 'bigvideo-init', get_stylesheet_directory_uri() . '/js/bigvideo-init.js', array( 'video-min' ), '1.0.0', true );
+		//wp_enqueue_script( 'video-min', get_stylesheet_directory_uri() . '/js/video.min.js',  array( 'jquery' , 'maidive-global-js' ), '', true );
+		wp_enqueue_script( 'bigvideo-init', get_stylesheet_directory_uri() . '/js/bigvideo-init.js', array( 'maidive-global-js' ), '1.0.0', true );
 		
 		//If no videos or post thumbnails are present, use default video set in customizer
 		$bigvideo_mp4 = get_option( 'maidive-background-video-mp4' );
@@ -281,37 +205,12 @@ function maidive_blog_genesis_meta() {
 		//* Customize the post info function
 		add_filter( 'genesis_post_info', 'maidive_post_info_filter' );
 		function maidive_post_info_filter($post_info) {
-			$post_info = '[post_date] [post_categories before=""]';
+			$post_info = '[post_date]';
 			return $post_info;
 		}
 				
 		//* Remove the entry meta in the entry header
 		add_action( 'genesis_entry_header', 'genesis_post_info', 12 );
 		
-		// Remove primary sidebar and replace with secondary sidebar
-		remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
-		add_action( 'genesis_sidebar', 'genesis_do_sidebar_alt' );
-		
 	}	
-}
-
-// Add featured image for specific size only in archive view, remove in all else
-function maidive_featured_image() {
-
-	if( is_archive() ) {
-		
-		$image_args = array(
-			'size' => 'archive-thumbnail',
-		);
-	
-		$image = genesis_get_image( $image_args );
-	
-		if ( $image ) {
-			echo '<a href="' . get_permalink() . '">' . $image .'</a>';
-		}
-		
-	}else{
-		return;
-	}
-
 }
