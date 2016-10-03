@@ -26,9 +26,6 @@ function maidive_page_builder_genesis_meta() {
         wp_enqueue_script( 'bigvideo-builder-init', get_stylesheet_directory_uri() . '/js/bigvideo-builder-init.js', array( 'maidive-global-js' ), '1.0.0', true );
 	}
 
-	// Remove 'site-inner' from structural wrap
-	//add_theme_support( 'genesis-structural-wraps', array( 'header', 'footer-widgets', 'footer' ) );
-
 	//* Force full-width-content layout
 	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 
@@ -71,7 +68,12 @@ function maidive_builder_loop() {
             $formats = get_the_terms( get_the_ID(), 'format' );
 				
         	if( has_term('full-screen-hero-with-video', 'format') ) {
-                wp_localize_script( 'bigvideo-builder-init', 'BigVideoLocalizeMp4', get_field('maidive_video_url_mp4' ) );
+                $mobile_fallback    = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'maidive_backstretch' );
+                wp_localize_script( 'bigvideo-builder-init', 'bigVideo', array(
+                    'video'         => get_field('maidive_video_url_mp4' ),
+                    'image'         => $mobile_fallback[0]
+                    ) 
+                );
 
                 echo '<article class="'.join( ' ', get_post_class() ).'" itemscope="itemscope" itemtype="http://schema.org/Hotel">';
 					echo '<div class="container">';
@@ -102,7 +104,7 @@ function maidive_builder_loop() {
 
         	if( has_term('left-content-right-image', 'format') && has_post_thumbnail() ) {
         		$right_image    = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'maidive_square' );
-                $right_image_id = get_post_thumbnail_id($post->id);
+                $right_image_id = get_post_thumbnail_id($post->ID);
                 $right_alt      = get_post_meta( $right_image_id, '_wp_attachment_image_alt', true);
                 
                 echo '<article class="'.join( ' ', get_post_class() ).'" itemscope="itemscope" itemtype="http://schema.org/Hotel">';
@@ -127,7 +129,7 @@ function maidive_builder_loop() {
 
         	if( has_term('left-image-right-content', 'format') && has_post_thumbnail() ) {
                 $left_image     = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'maidive_square', false, '' );
-                $left_image_id  = get_post_thumbnail_id($post->id);
+                $left_image_id  = get_post_thumbnail_id($post->ID);
                 $left_alt       = get_post_meta( $left_image_id, '_wp_attachment_image_alt', true);
 
         		echo '<article class="'.join( ' ', get_post_class() ).'" itemscope="itemscope" itemtype="http://schema.org/Hotel">';
@@ -152,7 +154,7 @@ function maidive_builder_loop() {
 
         	if( has_term('full-width-image', 'format') && has_post_thumbnail() ) {
                 $full_image     = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'maidive_rectangle', false, '' );
-                $full_image_id  = get_post_thumbnail_id($post->id);
+                $full_image_id  = get_post_thumbnail_id($post->ID);
                 $full_alt       = get_post_meta( $full_image_id, '_wp_attachment_image_alt', true);
 
         		echo '<article class="'.join( ' ', get_post_class() ).'" itemscope="itemscope" itemtype="http://schema.org/Hotel">';

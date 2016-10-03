@@ -1,10 +1,15 @@
 jQuery(function( $ ){
 
 	var BV = new $.BigVideo({container: $('.format-full-screen-hero-with-video.entry'), useFlashForFirefox:false, doLoop: true});
-		BV.init();
-	BV.show([
-		{ type: "video/mp4", src: BigVideoLocalizeMp4 }
-	]);
+	BV.init();
+	if (Modernizr.touchevents) {
+		BV.show(bigVideo.image);
+	} else {
+		BV.show([{ 
+			type: "video/mp4", 
+			src: bigVideo.video
+		}]);
+	}
 
 	// Fade in the video background after the video is fully loaded
 	BV.getPlayer().on('durationchange',function(){
@@ -108,7 +113,6 @@ jQuery(function( $ ){
 					$('#big-video-image')
 						.css({
 							width: 'auto',
-							height: containerH,
 							top:0,
 							left:-(containerH*mediaAspect-containerW)/2
 						});
@@ -134,7 +138,6 @@ jQuery(function( $ ){
 					$('#big-video-image')
 						.css({
 							width: containerW,
-							height: 'auto',
 							top:-(containerW/mediaAspect-containerH)/2,
 							left:0
 						});

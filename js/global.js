@@ -1,4 +1,7 @@
 jQuery(function( $ ){
+
+	// Tabs for single attorney profiles		
+	$('.maidive-tabs #tab-container').tabs();
 	
 	// Dynamic front page slideshow and window height
 	var adminHeight = $('#wpadminbar').outerHeight();
@@ -8,18 +11,19 @@ jQuery(function( $ ){
 		
 	if(window.innerWidth > 800 && window.innerHeight > 800) {
 		var newHeight = windowHeight - siteHeaderHeight - siteInnerHeight - adminHeight;
-		$('.home-top') .css({'height': newHeight +'px'});
+		$('.home-top') .css({'min-height': newHeight +'px'});
 
 		var builderHeight = windowHeight - adminHeight;
-		$('.format-full-screen-hero-with-image') .css({'height': builderHeight +'px'});
-		$('.format-full-screen-hero-with-video') .css({'height': builderHeight +'px'});
+		$('.format-full-screen-hero-with-image') .css({'min-height': builderHeight +'px'});
+		$('.format-full-screen-hero-with-video') .css({'min-height': builderHeight +'px'});
 	}else{
 		var newHeight = windowHeight - adminHeight;
-		$('.home-top') .css({'height': newHeight +'px'});
+		$('.home-top') .css({'min-height': newHeight +'px'});
 
 		var builderHeight = windowHeight - adminHeight;
-		$('.format-full-screen-hero-with-image') .css({'height': builderHeight +'px'});
-		$('.format-full-screen-hero-with-video') .css({'height': builderHeight +'px'});
+		$('.format-full-screen-hero-with-image') .css({'min-height': builderHeight +'px'});
+		$('.format-full-screen-hero-with-video') .css({'min-height': builderHeight +'px'});
+		$('.format-full-screen-hero-with-video #big-video-image') .css({'min-height': builderHeight +'px !important'});
 	}
 		
 	$(window).resize(function(){
@@ -30,18 +34,19 @@ jQuery(function( $ ){
 			
 		if(window.innerWidth > 800 && window.innerHeight > 800) {
 			var newHeight = windowHeight - siteHeaderHeight - siteInnerHeight - adminHeight;
-			$('.home-top') .css({'height': newHeight +'px'});
+			$('.home-top') .css({'min-height': newHeight +'px'});
 
 			var builderHeight = windowHeight - adminHeight;
-			$('.format-full-screen-hero-with-image') .css({'height': builderHeight +'px'});
-			$('.format-full-screen-hero-with-video') .css({'height': builderHeight +'px'});
+			$('.format-full-screen-hero-with-image') .css({'min-height': builderHeight +'px'});
+			$('.format-full-screen-hero-with-video') .css({'min-height': builderHeight +'px'});
 		}else{
 			var newHeight = windowHeight - adminHeight;
-			$('.home-top') .css({'height': newHeight +'px'});
+			$('.home-top') .css({'min-height': newHeight +'px'});
 
 			var builderHeight = windowHeight - adminHeight;
-			$('.format-full-screen-hero-with-image') .css({'height': builderHeight +'px'});
-			$('.format-full-screen-hero-with-video') .css({'height': builderHeight +'px'});
+			$('.format-full-screen-hero-with-image') .css({'min-height': builderHeight +'px'});
+			$('.format-full-screen-hero-with-video') .css({'min-height': builderHeight +'px'});
+			$('.format-full-screen-hero-with-video #big-video-image') .css({'min-height': builderHeight +'px !important'});
 		}
 	});
 	
