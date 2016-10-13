@@ -10,6 +10,9 @@
 add_action( 'genesis_meta', 'maidive_page_builder_genesis_meta' );
 function maidive_page_builder_genesis_meta() {
 	
+    //* Force full-width-content layout
+    add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+
     //* Add custom body class to the head
     add_filter( 'body_class', 'maidive_builder_add_body_class' );
     function maidive_builder_add_body_class( $classes ) {
@@ -23,11 +26,8 @@ function maidive_page_builder_genesis_meta() {
 	// Load scripts for all pages	
 	add_action( 'wp_enqueue_scripts', 'maidive_load_builder_scripts' );
 	function maidive_load_builder_scripts() {
-        wp_enqueue_script( 'bigvideo-builder-init', get_stylesheet_directory_uri() . '/js/bigvideo-builder-init.js', array( 'maidive-global-js' ), '1.0.0', true );
+        wp_enqueue_script( 'bigvideo-builder-init', get_stylesheet_directory_uri() . '/js/builder.init.min.js', array( 'jquery' ), CHILD_THEME_VERSION, true );
 	}
-
-	//* Force full-width-content layout
-	add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 
 	// Remove all default page information
 	remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_open', 5 );
@@ -65,7 +65,7 @@ function maidive_builder_loop() {
     if( $items->have_posts() ) {
         while( $items->have_posts() ) {
             $items->the_post();
-            $formats = get_the_terms( get_the_ID(), 'format' );
+            //$formats = get_the_terms( get_the_ID(), 'format' );
 				
         	if( has_term('full-screen-hero-with-video', 'format') ) {
                 $mobile_fallback    = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'maidive_backstretch' );

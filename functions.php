@@ -19,18 +19,14 @@ function maidive_theme_setup() {
 	
 	// Load customizer
 	include_once( get_stylesheet_directory() . '/lib/customize.php' );
+
+	//* Simple social share filters
+	include_once( trailingslashit( get_stylesheet_directory() ) . '/lib/simple-social-share.php' );
 	
 	//* Child theme (do not remove)
 	define( 'CHILD_THEME_NAME', __( 'Mai Dive Child Theme', 'maidive' ) );
 	define( 'CHILD_THEME_URL', 'https://www.maidive.com' );
-	define( 'CHILD_THEME_VERSION', '2.1' );
-
-	//* Add front-page body class
-	add_filter( 'body_class', 'maidive_hide_body_class' );
-	function maidive_hide_body_class( $classes ) {
-		$classes[] = 'hidden-until-ready';
-		return $classes;
-	}
+	define( 'CHILD_THEME_VERSION', '3.8.0' );
 	
 	//* Add HTML5 markup structure
 	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
@@ -101,32 +97,64 @@ function maidive_theme_setup() {
 		'id'          => 'mobile-toolbar',
 		'name'        => __( 'Mobile Toolbar', 'maidive' ),
 	) );
-	
-	//* Custom functions
-	//------------------------------------------------------------------------------------------------------
-	
-	//* Favicon
-	require_once( trailingslashit( get_stylesheet_directory() ) . '/lib/maidive-favicon.php' );
-	
-	//* Footer
-	require_once( trailingslashit( get_stylesheet_directory() ) . '/lib/maidive-footer.php' );
-	
-	//* Login logo
-	require_once( trailingslashit( get_stylesheet_directory() ) . '/lib/maidive-login-logo.php' );
-	
-	//* Unregister Genesis specific functions, page layouts, and page templates
-	require_once( trailingslashit( get_stylesheet_directory() ) . '/lib/genesis-unregister-functions.php' );
-	
-	//* Simple social share filters
-	require_once( trailingslashit( get_stylesheet_directory() ) . '/lib/simple-social-share.php' );
 
+	// Genesis Unregister functions
+	//-----------------------------------------------------------------------------------------------
+
+	//* Unregister content/sidebar layout setting
+	//* genesis_unregister_layout( 'content-sidebar' );
+
+	//* Unregister sidebar/content layout setting
+	genesis_unregister_layout( 'sidebar-content' );
+
+	//* Unregister content/sidebar/sidebar layout setting
+	genesis_unregister_layout( 'content-sidebar-sidebar' );
+
+	//* Unregister sidebar/sidebar/content layout setting
+	genesis_unregister_layout( 'sidebar-sidebar-content' );
+
+	//* Unregister sidebar/content/sidebar layout setting
+	genesis_unregister_layout( 'sidebar-content-sidebar' );
+
+	//* Unregister full-width content layout setting
+	//* genesis_unregister_layout( 'full-width-content' );
+
+	// Remove page templates
+	add_filter( 'theme_page_templates', 'be_remove_genesis_page_templates' );
+
+	//Remove genesis script support
+	remove_post_type_support( 'post', 'genesis-scripts' );	// Posts
+	remove_post_type_support( 'page', 'genesis-scripts' );	// Pages
+
+	//* Remove Genesis in-post SEO Settings
+	remove_action( 'admin_menu', 'genesis_add_inpost_seo_box' );
+
+	// Remove layout support on archive
+	remove_theme_support( 'genesis-archive-layouts' );
+
+	//* Remove Genesis Layout Settings
+	remove_theme_support( 'genesis-inpost-layouts' );
+
+	//* Remove the edit link
+	add_filter ( 'genesis_edit_post_link' , '__return_false' );
+
+	//* Unregister primary navigation menu
+	add_theme_support( 'genesis-menus', array( 'secondary' => __( 'Secondary Navigation Menu', 'genesis' ) ) );
+
+	//* Unregister secondary navigation menu
+	add_theme_support( 'genesis-menus', array( 'primary' => __( 'Primary Navigation Menu', 'genesis' ) ) );
+
+	//* Unregister secondary sidebar
+	unregister_sidebar( 'sidebar-alt' );
+	
 }
 
 // Load scripts for all pages
 function maidive_load_scripts() {
-	wp_enqueue_script( 'modernizr', 		get_stylesheet_directory_uri() . '/js/modernizr.3.3.1.min.js', array( 'jquery' ), '3.3.1', false );
+	wp_enqueue_script( 'modernizr', 		get_stylesheet_directory_uri() . '/js/modernizr.3.3.1.min.js', array( 'jquery' ), '3.3.1', true );
 	wp_enqueue_script( 'jquery-ui-tabs', '', array( 'jquery' ), CHILD_THEME_VERSION, true );
-	wp_enqueue_script( 'maidive-global-js', get_stylesheet_directory_uri() . '/js/global.js', array( 'jquery', 'modernizr', 'jquery-ui-tabs' ), CHILD_THEME_VERSION, true );
+	wp_enqueue_script( 'maidive-global-js', get_stylesheet_directory_uri() . '/js/global.min.js', array( 'jquery', 'jquery-ui-tabs', 'modernizr' ), CHILD_THEME_VERSION, true );
+
 	wp_enqueue_style( 'font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' );
 	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Lato:300,700|Roboto:400,700', array(), CHILD_THEME_VERSION );
 }
@@ -138,32 +166,32 @@ function maidive_load_video_scripts() {
 	
 	if( wp_is_mobile() && has_post_thumbnail() ) { 
 		// if it is not mobile, has a thumbnail, and do not have any contents in the custom fields for videos, show the psot thumbnail
-		wp_enqueue_script( 'maidive-backstretch-init', get_bloginfo( 'stylesheet_directory' ).'/js/backstretch-init.js',  array( 'jquery' , 'maidive-global-js' ), '1.0.0', false );	
+		wp_enqueue_script( 'maidive-backstretch', get_bloginfo( 'stylesheet_directory' ).'/js/backstretch.init.min.js',  array( 'jquery' ), CHILD_THEME_VERSION, true );	
 		$featured_image_url = wp_get_attachment_url( get_post_thumbnail_id(), 'maidive_backstretch' );
 		$backstretch_src = array( 'src' => $featured_image_url );
-		wp_localize_script( 'maidive-backstretch-init', 'BackStretchImg', $backstretch_src );
+		wp_localize_script( 'maidive-backstretch', 'BackStretchImg', $backstretch_src );
 	
 	}elseif( wp_is_mobile() && !has_post_thumbnail() ) {	
 		// If it fails the first conditional by not having a post thumbnail, display default image from customizer
-		wp_enqueue_script( 'maidive-backstretch-init', get_bloginfo( 'stylesheet_directory' ).'/js/backstretch-init.js',  array( 'jquery' , 'maidive-global-js' ), '1.0.0', false );
+		wp_enqueue_script( 'maidive-backstretch', get_bloginfo( 'stylesheet_directory' ).'/js/backstretch.init.min.js',  array( 'jquery' ), CHILD_THEME_VERSION, true );
 		$backstretch_src = array( 'src' => get_option( 'maidive-default-image') );
-		wp_localize_script( 'maidive-backstretch-init', 'BackStretchImg', $backstretch_src );
+		wp_localize_script( 'maidive-backstretch', 'BackStretchImg', $backstretch_src );
 	
 	}elseif( has_post_thumbnail() && empty($var_maidive_video_url_mp4) ) { 
 		// if it is not mobile, has a thumbnail, and do not have any contents in the custom fields for videos, show the psot thumbnail
-		wp_enqueue_script( 'maidive-backstretch-init', get_bloginfo( 'stylesheet_directory' ).'/js/backstretch-init.js',  array( 'jquery' , 'maidive-global-js' ), '1.0.0', false );		
+		wp_enqueue_script( 'maidive-backstretch', get_bloginfo( 'stylesheet_directory' ).'/js/backstretch.init.min.js',  array( 'jquery' ), CHILD_THEME_VERSION, true );		
 		$featured_image_url = wp_get_attachment_url( get_post_thumbnail_id(), 'maidive_backstretch'  );
 		$backstretch_src = array( 'src' => $featured_image_url );
-		wp_localize_script( 'maidive-backstretch-init', 'BackStretchImg', $backstretch_src );
+		wp_localize_script( 'maidive-backstretch', 'BackStretchImg', $backstretch_src );
 		
 	}elseif( !empty($var_maidive_video_url_mp4) ){
 		// Show video if custom fields are set on individual pages
-		wp_enqueue_script( 'bigvideo-init', get_stylesheet_directory_uri() . '/js/bigvideo-init.js', array( 'maidive-global-js' ), '1.0.0', true );
+		wp_enqueue_script( 'bigvideo-init', get_stylesheet_directory_uri() . '/js/bigvideo.init.min.js', array( 'jquery' ), CHILD_THEME_VERSION, true );
 		$bigvideo_mp4 = $var_maidive_video_url_mp4;
 		wp_localize_script( 'bigvideo-init', 'BigVideoLocalizeMp4', $bigvideo_mp4 );
 	}else{
 		//If no videos or post thumbnails are present, use default video set in customizer
-		wp_enqueue_script( 'bigvideo-init', get_stylesheet_directory_uri() . '/js/bigvideo-init.js', array( 'maidive-global-js' ), '1.0.0', true );
+		wp_enqueue_script( 'bigvideo-init', get_stylesheet_directory_uri() . '/js/bigvideo.init.min.js', array( 'jquery' ), CHILD_THEME_VERSION, true );
 		$bigvideo_mp4 = get_option( 'maidive-background-video-mp4' );
 		wp_localize_script( 'bigvideo-init', 'BigVideoLocalizeMp4', $bigvideo_mp4 );
 	}
@@ -177,7 +205,7 @@ function maidive_watch_video() {
 	) );
 }
 
-// Watch video button
+// Mobile toolbar from widget area
 function maidive_mobile_toolbar() {
 	genesis_widget_area( 'mobile-toolbar', array(
 		'before' => '<div class="mobile-toolbar">',
@@ -204,4 +232,28 @@ function maidive_blog_genesis_meta() {
 		add_action( 'genesis_entry_header', 'genesis_post_info', 12 );
 		
 	}	
+}
+
+//* Customize the footer
+add_filter( 'genesis_footer_output', 'maidive_footer_creds_filter' );
+function maidive_footer_creds_filter( $creds ) {
+	$creds = '[footer_copyright] All Rights Reserved';
+	$site_title = get_bloginfo('name');
+	$login = do_shortcode( '[footer_loginout]' );
+	return '<div class="credits">'.$creds.'<span style="margin: 0 10px;">|</span>'.$site_title.'<span style="margin: 0 10px;">|</span>'.$login.'</div>';
+}
+
+/**
+ * Remove Genesis Page Templates
+ *
+ * @author Bill Erickson
+ * @link http://www.billerickson.net/remove-genesis-page-templates
+ *
+ * @param array $page_templates
+ * @return array
+ */
+function be_remove_genesis_page_templates( $page_templates ) {
+	unset( $page_templates['page_archive.php'] );
+	unset( $page_templates['page_blog.php'] );
+	return $page_templates;
 }

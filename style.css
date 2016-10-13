@@ -77,14 +77,6 @@
 
 
 /*
-Hide body if javacsript is enabled. Then once the Jquery file is loaded, remove class to show page
-----------------------------------------------------------------------------------------------------*/
-body.hidden-until-ready {
-    visibility: hidden;
-	opacity: 0;
-}
-
-/*
 HTML5 Reset
 ---------------------------------------------------------------------------------------------------- */
 
@@ -159,12 +151,6 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	background-color: #ffffff;
-	-webkit-transition: opacity .75s ease-in-out;
-	-moz-transition:    opacity .75s ease-in-out;
-	-ms-transition:     opacity .75s ease-in-out;
-	-o-transition:      opacity .75s ease-in-out;
-	transition:         opacity .75s ease-in-out;
-	opacity: 1;
 }
 
 a,
@@ -175,12 +161,13 @@ input[type="reset"],
 input[type="submit"],
 textarea:focus,
 .maidive-home .featured-content img,
-.button {
-	-webkit-transition: all 0.1s ease-in-out;
-	-moz-transition:    all 0.1s ease-in-out;
-	-ms-transition:     all 0.1s ease-in-out;
-	-o-transition:      all 0.1s ease-in-out;
-	transition:         all 0.1s ease-in-out;
+.button,
+.entry {
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition:    all 0.2s ease-in-out;
+	-ms-transition:     all 0.2s ease-in-out;
+	-o-transition:      all 0.2s ease-in-out;
+	transition:         all 0.2s ease-in-out;
 }
 
 ::-moz-selection {
