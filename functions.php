@@ -26,7 +26,7 @@ function maidive_theme_setup() {
 	//* Child theme (do not remove)
 	define( 'CHILD_THEME_NAME', __( 'Mai Dive Child Theme', 'maidive' ) );
 	define( 'CHILD_THEME_URL', 'https://www.maidive.com' );
-	define( 'CHILD_THEME_VERSION', '3.8.0' );
+	define( 'CHILD_THEME_VERSION', '3.8.2' );
 	
 	//* Add HTML5 markup structure
 	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
@@ -80,7 +80,7 @@ function maidive_theme_setup() {
 	add_action('genesis_after','maidive_watch_video');
 	
 	// Mobile toolbar
-	add_action('genesis_after','maidive_mobile_toolbar');
+	//add_action('genesis_after','maidive_mobile_toolbar');
 	
 	// Blog specific actions
 	add_action( 'genesis_meta', 'maidive_blog_genesis_meta' );
@@ -151,7 +151,7 @@ function maidive_theme_setup() {
 
 // Load scripts for all pages
 function maidive_load_scripts() {
-	wp_enqueue_script( 'modernizr', 		get_stylesheet_directory_uri() . '/js/modernizr.3.3.1.min.js', array( 'jquery' ), '3.3.1', true );
+	wp_enqueue_script( 'modernizr', 		get_stylesheet_directory_uri() . '/js/modernizr.3.3.1.min.js', array( 'jquery' ), CHILD_THEME_VERSION, true );
 	wp_enqueue_script( 'jquery-ui-tabs', '', array( 'jquery' ), CHILD_THEME_VERSION, true );
 	wp_enqueue_script( 'maidive-global-js', get_stylesheet_directory_uri() . '/js/global.min.js', array( 'jquery', 'jquery-ui-tabs', 'modernizr' ), CHILD_THEME_VERSION, true );
 
