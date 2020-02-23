@@ -21,14 +21,6 @@ function maidive_load_scripts() {
 
 	wp_localize_script(
 		'global',
-		'BackStretchImg',
-		array(
-			'src' => wp_get_attachment_url( get_post_thumbnail_id(), 'maidive_backstretch' ),
-		)
-	);
-
-	wp_localize_script(
-		'global',
 		'genesis_responsive_menu',
 		array(
 			'mainMenu'         => __( 'Menu', 'maidive' ),

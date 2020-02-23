@@ -530,7 +530,7 @@ Structure and Layout
 
 .content {
 	float: right;
-	width: 740px;
+	width: 840px;
 }
 
 .content-sidebar .content,
@@ -560,7 +560,7 @@ Structure and Layout
 
 .sidebar-primary {
 	float: right;
-	width: 360px;
+	width: 300px;
 }
 
 .sidebar-content .sidebar-primary,
@@ -675,6 +675,7 @@ img.centered,
 .aligncenter {
 	display: block;
 	margin: 0 auto 24px;
+	text-align: center;
 }
 
 a.alignnone img,
@@ -948,10 +949,12 @@ Site Header
 	text-decoration: underline;
 }
 
+.has-featured-image .site-header .header-widget-area .widget_custom_html a,
 .page-builder .site-header .header-widget-area .widget_custom_html a {
     color: #f3f3f3;
 }
 
+.has-featured-image .site-header .header-widget-area .widget_custom_html a:hover,
 .page-builder .site-header .header-widget-area .widget_custom_html a:hover {
 	color: #ffffff;
 }
@@ -1111,6 +1114,8 @@ Site Navigation
 	margin-top: 10px;
 }
 
+.has-featured-image .nav-primary .wrap,
+.has-featured-image .site-header .widget_nav_menu,
 .page-builder .nav-primary .wrap,
 .page-builder .site-header .widget_nav_menu  {
 	background: rgba( 35,34,100,.8);
@@ -1148,93 +1153,41 @@ Site Navigation
 Content Area
 ---------------------------------------------------------------------------------------------------- */
 
-/* Home Page
+/* Hero
 --------------------------------------------- */
 
-.maidive-home .content .widget {
-	float: left;
-	width: 16.5%;
-}
-
-.maidive-home .content .featured-content,
-.maidive-home .content .widget_text {
-	padding: 0;
-}
-
-.maidive-home .content .textwidget {
-	padding: 40px;
-}
-
-.maidive-home .site-header {
-	margin-bottom: 0;
-}
-
-.home-top {
+.hero {
 	position: relative;
-    display: table;
-    table-layout: fixed;
-    text-align: center;
-    margin: auto;
-}
-
-.home-top .wrap {
-	color: #fff;
-	font-family: 'Lato', sans-serif;
-	font-weight: 300;
-    display: table-cell;
-    vertical-align: middle;
-	text-align: left;
-}
-
-.home-top .hero .widget-title {
-	color: #fff;
-	font-size: 70px;
-	line-height: 1.25;
-	text-transform: none;
-	text-shadow: 2px 2px 2px #28ACE2;
-}
-
-.home-top .hero .textwidget {
-	width: 100%;
-}
-
-.home-top .hero .textwidget p {
-	font-size: 28px;
-	text-shadow: 1px 1px 1px #000;
-}
-
-.home-top .hero .button {
-	background-color: #28ACE2;
-	color: #ffffff;
-	text-transform: uppercase;
-}
-
-.home-top .hero .secondary {
-	margin-left: 20px;
-	font-style: italic;
-	font-family: 'Roboto', sans-serif;
+    background-color: #000;
+    background-size: cover;
+    background-position: 50%;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+	padding: 200px 0 3%;
 	color: #ffffff;
 }
 
-.home-top .hero .secondary:hover {
-	text-decoration: underline;
+.hero .wrap {
+	text-align: center;
+	max-width: 960px;
+	position: relative;
+	z-index: 999;
 }
 
-.home-top .hero .widget .button:hover {
-	background-color: #232264;
-	color: #fff;
-}
-
-.home-top .trip-advisor .widget {
-	float: right;
-}
-
-.home-top .trip-advisor .TA_selfserveprop {
-	box-shadow: 2px 2px 0px #28ACE2;
-}
-
-.home-middle .widget img {
-	box-shadow: 2px 2px 0px #28ACE2;
+.hero.has-background-dim:before {
+	position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+	opacity: .5;
+	content: "";
+    background-color: inherit;
 }
 
 /* Entries
@@ -1491,9 +1444,7 @@ Sidebars
 }
 
 .sidebar .widget {
-	background-color: rgba(255,255,255,.9);
 	margin-bottom: 40px;
-	padding: 40px;
 }
 
 .sidebar .post-date {
@@ -1512,6 +1463,10 @@ Sidebars
 	width: 100%;
 	text-align: center;
 	margin-top: 30px;
+}
+
+.sidebar  .widget_custom_html .widget-title {
+	display: none;
 }
 
 
@@ -1620,6 +1575,7 @@ Site Footer
 }
 
 /* Page Builder */
+.has-featured-image .site-header,
 .page-builder .site-header {
 	position: absolute;
 }
@@ -1669,14 +1625,16 @@ Site Footer
 
 /* Blocks */
 
-.entry .wp-block-cover, 
-.entry .wp-block-cover-image {
+.page-builder .entry .wp-block-cover, 
+.page-builder .entry .wp-block-cover-image {
 	padding: 200px 0 3%;
-	min-height: 100vh;
+	height: 100vh;
 }
 
-.entry .wp-block-cover h1,
-.entry .wp-block-cover-image h1 {
+.hero h1,
+.page-builder .entry .wp-block-cover h1,
+.page-builder .entry .wp-block-cover-image h1 {
+	color: #ffffff;
 	text-shadow: 2px 2px 2px #28ACE2;
 }
 
@@ -1690,6 +1648,7 @@ Site Footer
 	margin: 0 auto;
 }
 
+.hero .wp-block-separator,
 .entry .wp-block-separator {
 	border-bottom-color: #28ACE2;
 	margin: 30px auto;
@@ -1700,7 +1659,6 @@ Site Footer
 }
 
 .entry .wp-block-image {
-	margin-bottom: 0;
 	max-height: 650px;
 	overflow: hidden;
 }
@@ -1710,30 +1668,46 @@ Site Footer
 	max-height: 650px;
 }
 
-.entry .wp-block-media-text .wp-block-media-text__content {
+.page-builder .entry .wp-block-image {
+	margin-bottom: 0;
+}
+
+.page-builder .entry .wp-block-media-text .wp-block-media-text__content {
 	padding: 4%;
 }
 
-.entry .wp-block-media-text .wp-block-media-text__media {
+.page-builder .entry .wp-block-media-text .wp-block-media-text__media {
 	overflow: hidden;
 	height: 500px;
 }
 
-.entry .wp-block-media-text>figure>img, 
-.entry .wp-block-media-text>figure>video {
+.page-builder .entry .wp-block-media-text>figure>img, 
+.page-builder .entry .wp-block-media-text>figure>video {
 	object-fit: cover;
 	width: 100%;
 	height: 100%;
 }
 
-.entry .blocks-gallery-grid {
+.page-builder .entry .blocks-gallery-grid {
 	margin: 0;
 }
 
-.entry .wp-block-gallery .blocks-gallery-item,
-.entry .blocks-gallery-grid .blocks-gallery-image {
+.page-builder .entry .wp-block-gallery .blocks-gallery-item,
+.page-builder .entry .blocks-gallery-grid .blocks-gallery-image {
 	margin-right: 0 !important;
 	margin-bottom: 0 !important;
+}
+
+.entry .wp-block-gallery.alignwide,
+.entry .wp-block-image.alignwide {
+	width: 120%;
+	max-width: 120%;
+	margin: 32px -10%;
+}
+
+.entry .blocks-gallery-grid, 
+.entry .wp-block-gallery {
+	margin: 0;
 }
 
 /*
@@ -1766,21 +1740,13 @@ Media Queries
 		width: 28%;
 	}
 	
-	.home-top .hero .widget-title {
-		font-size: 55px;
-	}
-	
 	.maidive-home .content .widget {
 		width: auto;
 		margin-right: 5%;
 		margin-bottom: 5%;
 	}
 	
-	.home-top {
-		width: 90%;
-	}
-	
-	.home-top .wrap {
+	.hero .wrap {
 		padding: 80px 0;
 	}
 
@@ -1811,6 +1777,7 @@ Media Queries
 		margin-bottom: 0;
 	}
 
+	.has-featured-image .site-header,
 	.page-builder .site-header {
 		position: relative;
 	}
@@ -1902,19 +1869,25 @@ Media Queries
 		padding: 12px;
 	}
 	
-	.home-top .hero .widget-title {
-		font-size: 42px;
-	}
-	
-	.home-top .hero .textwidget p {
-		font-size: 22px;
-	}
-	
 }
 
 @media only screen and (max-width: 800px) {
 
-	.site-inner, .wrap {
+	.has-featured-image .nav-primary .wrap,
+	.has-featured-image .site-header .widget_nav_menu,
+	.page-builder .nav-primary .wrap,
+	.page-builder .site-header .widget_nav_menu  {
+		background: rgba( 35,34,100,1);
+	}
+
+	.entry .wp-block-gallery.alignwide, 
+	.entry .wp-block-image.alignwide {
+		margin-left: 0;
+		width: 100%;
+	}
+
+	.site-inner, 
+	.wrap {
 		width: 100%;
 	}
 
@@ -1957,10 +1930,6 @@ Media Queries
 	
 	.maidive-home .content .wrap {
 		width: 100%;
-	}
-		
-	.home-top .widget-title {
-		font-size: 38px;
 	}
 	
 	.nav-secondary .genesis-nav-menu a {
@@ -2084,41 +2053,24 @@ Media Queries
     	margin-top: 0;
     	border-radius: 0;
 	}
+
+	.hero,
+	.page-builder .entry .wp-block-cover, 
+	.page-builder .entry .wp-block-cover-image {
+		padding: 0;
+		height: 100%;
+	}
 	
-	.home-top .wrap {
+	.hero .wrap {
 		padding: 60px 5% 120px;
 		transform: none;
 		width: 100%;
 	}
 	
-	.home-top .hero .textwidget {
-		width: 100%;
-	}
-	
-	.home-top .hero .button {
+	.hero .button {
 		width: 100%;
     	text-align: center;
     	margin-bottom: 40px;
-	}
-	
-	.home-top .hero .secondary {
-		width: 100%;
-    	text-align: center;
-    	display: block;
-    	margin-left: 0;
-		margin-bottom: 40px;
-	}
-	
-	.home-top .trip-advisor .widget {
-		float: none;
-	}
-	
-	.home-top .trip-advisor .TA_selfserveprop {
-		box-shadow: 0 0 0;
-	}
-	
-	.home-top .trip-advisor #CDSWIDSSP {
-		width: 100% !important;
 	}
 	
 	.genesis-nav-menu .menu-item.button {
@@ -2155,15 +2107,9 @@ Media Queries
 
 @media only screen and (max-width: 480px) {
 	
-	
-	.home-top .hero .widget-title,
 	.format-full-screen-hero-with-image .entry-title, 
 	.format-full-screen-hero-with-video .entry-title  {
 		font-size: 36px;
-	}
-	
-	.home-top .hero .textwidget p {
-		font-size: 20px;
 	}
 	
 	.maidive-home .content .widget {

@@ -10,7 +10,7 @@
 // Force full-width-content layout.
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 
-// Remove all default page information.
+// Remove page title and header markup.
 remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_open', 5 );
 remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
 remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_close', 15 );
