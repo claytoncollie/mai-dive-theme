@@ -13,7 +13,7 @@ require_once get_template_directory() . '/lib/init.php';
 // Child theme (do not remove).
 define( 'CHILD_THEME_NAME', 'Mai Dive Theme' );
 define( 'CHILD_THEME_URL', 'https://www.maidive.com' );
-define( 'CHILD_THEME_VERSION', '4.1.1' );
+define( 'CHILD_THEME_VERSION', '4.2.0' );
 
 // Set Localization (do not remove).
 load_child_theme_textdomain( 'maidive', apply_filters( 'child_theme_textdomain', get_stylesheet_directory() . '/languages', 'maidive' ) );

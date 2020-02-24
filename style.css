@@ -1625,6 +1625,22 @@ Site Footer
 
 /* Blocks */
 
+.page-builder .entry .wp-block-nk-awb {
+	position: relative;
+    background-color: #000;
+    background-size: cover;
+    background-position: 50%;
+    padding: 200px 0 3%;
+	height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	flex-direction: column;
+	overflow: hidden;
+	color: #ffffff;
+}
+
 .page-builder .entry .wp-block-cover, 
 .page-builder .entry .wp-block-cover-image {
 	padding: 200px 0 3%;
@@ -1632,6 +1648,7 @@ Site Footer
 }
 
 .hero h1,
+.page-builder .entry .wp-block-nk-awb h1,
 .page-builder .entry .wp-block-cover h1,
 .page-builder .entry .wp-block-cover-image h1 {
 	color: #ffffff;
@@ -1652,6 +1669,7 @@ Site Footer
 .entry .wp-block-separator {
 	border-bottom-color: #28ACE2;
 	margin: 30px auto;
+	width: 100px;
 }
 
 .entry .wp-block-media-text__content .wp-block-separator {
@@ -2056,9 +2074,14 @@ Media Queries
 
 	.hero,
 	.page-builder .entry .wp-block-cover, 
-	.page-builder .entry .wp-block-cover-image {
-		padding: 0;
+	.page-builder .entry .wp-block-cover-image,
+	.page-builder .entry .wp-block-nk-awb {
+		padding: 10% 10px;
 		height: 100%;
+	}
+
+	.hero {
+		padding: 0;
 	}
 	
 	.hero .wrap {
